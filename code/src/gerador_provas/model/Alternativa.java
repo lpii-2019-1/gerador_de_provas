@@ -3,6 +3,7 @@ package gerador_provas;
 public class Alternativa {
   private String alternativa;
   private boolean correta;
+  private String imagem;
   
   public Alternativa() {}
   

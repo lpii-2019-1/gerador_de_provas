@@ -3,13 +3,13 @@ package gerador_provas;
 public class Questao
 {
   private String enunciado;
-  private String[] alternativa;
   private String origem;
   private String area;
   private String disciplina;
   private String imagem;
+  private String[] alternativa = new String[5];
   
-  private Questao(String enunciado, String[] alternativa, String origem, String area, String disciplina) {
+  private Questao(String enunciado, Alternativa alternativa, String origem, String area, String disciplina) {
     setEnunciado(enunciado);
     setAlternativa(alternativa);
     setArea(area);
@@ -26,14 +26,7 @@ public class Questao
     this.enunciado = enunciado;
   }
   
-  public String[] getAlternativa() {
-    return alternativa;
-  }
-  
-  public void setAlternativa(String[] alternativa) {
-    this.alternativa = alternativa;
-  }
-  
+
   public String getOrigem() {
     return origem;
   }
@@ -66,10 +59,10 @@ public class Questao
     this.imagem = imagem;
   }
   
-  private String inserirQuestao(String enunciado, String[] alternativa, String origem, String area, String disciplina)
+  private String inserirQuestao(String enunciado,String origem, String area, String disciplina, Alternativa alternativa)
   {
     this.enunciado = enunciado;
-    this.alternativa = alternativa;
+    this.alternativa.add(alternativa);
     this.area = area;
     this.disciplina = disciplina;
     this.origem = origem;
