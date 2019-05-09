@@ -1,4 +1,6 @@
-package gerador_provas;
+package gerador_provas.model;
+
+
 
 public class Questao
 {
@@ -7,7 +9,7 @@ public class Questao
   private String area;
   private String disciplina;
   private String imagem;
-  private String[] alternativa = new String[5];
+  private Alternativa[] alternativa;
   
   private Questao(String enunciado, Alternativa alternativa, String origem, String area, String disciplina) {
     setEnunciado(enunciado);
