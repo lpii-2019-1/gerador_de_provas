@@ -34,9 +34,7 @@ public class Alternativa {
     this.imagem = imagem;
   }
   
-  public void alterar(String texto) {
-    this.alternativa = texto;
-  }
+
 
 
 
