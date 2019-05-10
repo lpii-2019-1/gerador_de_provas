@@ -1,24 +1,22 @@
 package gerador_provas.model;
 
-
-
 public class Questao
 {
   private String enunciado;
-  private String origem;
+  private Origem origem;
   private String area;
   private String disciplina;
   private String imagem;
-  private Alternativa[] alternativa;
+  
   
   
   public String getEnunciado() { return enunciado; }
   
   public void setEnunciado(String enunciado) {this.enunciado = enunciado; }
   
-  public String getOrigem() { return origem; }
+  public Origem getOrigem() {return origem;}
   
-  public void setOrigem(String origem) { this.origem = origem; }
+  public void setOrigem(Origem origem) { this.origem = origem; }
   
   public String getArea() { return area; }
   
@@ -32,18 +30,17 @@ public class Questao
   
   public void setImagem(String imagem) { this.imagem = imagem; }
   
-  public Alternativa[] getAlternativa() { return alternativa;}
+ // public Alternativa[] getAlternativa() { return alternativa;}
   
-  public void setAlternativa(Alternativa[] alternativa) { this.alternativa = alternativa; }
+ // public void setAlternativa(Alternativa[] alternativa) { this.alternativa = alternativa; }
   
 
 
-  private Questao(String enunciado, Alternativa[] alternativa, String origem, String area, String disciplina) {
-	    setEnunciado(enunciado);
-	    setAlternativa(alternativa);
-	    setArea(area);
-	    setDisciplina(disciplina);
-	    setOrigem(origem);
+  public Questao(String enunciado, Origem origem, String area, String disciplina) {
+	    this.enunciado = enunciado;
+	    this.origem = origem;
+	    this.area = area;
+	    this.disciplina = disciplina;
   }  
   
 }

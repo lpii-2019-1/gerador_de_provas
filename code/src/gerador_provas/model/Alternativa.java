@@ -26,17 +26,4 @@ public class Alternativa {
 
   public void setImagem(String imagem) { this.imagem = imagem; }
 
-  
-  public void inserir(String texto, boolean correta, String imagem)
-  {
-    this.alternativa = texto;
-    this.correta = correta;
-    this.imagem = imagem;
-  }
-  
-
-
-
-
-
 }
