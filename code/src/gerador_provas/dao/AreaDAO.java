@@ -33,7 +33,7 @@ public class AreaDAO {
 	
 	// Buscar area
 	public Area pesquisar(String nomeArea) {
-		String sql = "select * from area where area like '%?%'";
+		String sql = "select * from area where area = ?";
 		try {
 			stmt = conexao.prepareStatement(sql);
 			stmt.setString(1, nomeArea);

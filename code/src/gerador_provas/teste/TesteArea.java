@@ -9,14 +9,18 @@ public class TesteArea {
 		
 		AreaDAO areaDAO = new AreaDAO(); 
 		
-		//Area a1 = new Area();
-		//a1.setArea("Matemática e suas Tecnologias");
+		Area a1 = new Area();
+		a1.setArea("Matemática e suas Tecnologias");
 		
-		//areaDAO.cadastrar(a1);
+		areaDAO.cadastrar(a1);
+		
+		
+		System.out.println(a1.getArea());
 		
 		
 		
-		Area areaPesquisada = areaDAO.pesquisar("Linguagens");
+		Area areaPesquisada = areaDAO.pesquisar("Linguagens, Códigos e suas Tecnologias");
+	
         
         if (areaPesquisada.getIdarea() != 0) {
             System.out.println(areaPesquisada.getIdarea());
