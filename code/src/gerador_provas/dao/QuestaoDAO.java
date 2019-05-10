@@ -5,20 +5,19 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import gerador_provas.conexao.Conexao;
-import gerador_provas.model.Alternativa;
 import gerador_provas.model.Questao;
 
 
-public class AlternativaDAO {
+public class QuestaoDAO {
 	private Connection conexao;
-	private PreparedStatement stmt;
+	private PreparedStatement stm;
 	
-	public AlternativaDAO() {
+	public QuestaoDAO() {
 		this.conexao = new Conexao().getConexao();
 	}
 	
-	public void cadastrar(Alternativa alternativa, Questao questao) {
-		String sql = "Insert into alternativa (idquestao, idalternativa, alternativa, imagem, correta) values (?,?,?,?,?)";
+	public void cadastrar(Questao questao) {
+		String sql = "insert into questao (professor_cpf, idarea, iddisciplina, idorigem) values (?,?,?,?,?)";
 		try {
 			stmt = conexao.prepareStatement(sql);
 			stmt.setInt(1, alternativa.getIdQuestao());
@@ -30,6 +29,4 @@ public class AlternativaDAO {
 			throw new RuntimeException(e);
 		}
 	}
-	
-	
 }

@@ -2,10 +2,11 @@ package gerador_provas.model;
 
 public class Questao
 {
-  private String enunciado;
   private Origem origem;
   private String area;
   private String disciplina;
+  private String enunciado;
+  private Alternativa[] alternativa;
   private String imagem;
   
   
@@ -30,9 +31,9 @@ public class Questao
   
   public void setImagem(String imagem) { this.imagem = imagem; }
   
- // public Alternativa[] getAlternativa() { return alternativa;}
+  public Alternativa[] getAlternativa() { return alternativa;}
   
- // public void setAlternativa(Alternativa[] alternativa) { this.alternativa = alternativa; }
+  public void setAlternativa(Alternativa[] alternativa) { this.alternativa = alternativa; }
   
 
 
