@@ -25,6 +25,8 @@ public class AreaDAO {
 		try {
 			stmt = conexao.prepareStatement(sql);
 			stmt.setString(1, area.getArea());
+			stmt.execute();
+			stmt.close();
 			
 		}catch(Exception e) {
 			throw new RuntimeException(e);
