@@ -54,7 +54,7 @@ public class AreaDAO {
 		}
 	}
 	
-	// Lista todas as áreas
+	// Lista todas as areas
 	 public ArrayList<Area> listarTudo() {
 		String sql = "select * from area";
 		try {
@@ -77,5 +77,20 @@ public class AreaDAO {
 		}
 		
 	} 
+	 
+	 // Apagar 
+	 public void apagar(Area area) {
+		 String sql = "delete from area where idarea= ?";
+		 try {
+			  stmt = conexao.prepareStatement(sql);
+			  stmt.setInt(1, area.getIdarea());
+			  stmt.execute();
+			  stmt.close();
+			 
+		 }catch(Exception e) {
+			 throw new RuntimeException(e);
+		 }
+	 }
+	 
 	
 }

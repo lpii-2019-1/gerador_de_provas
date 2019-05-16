@@ -10,7 +10,7 @@ import gerador_provas.model.Questao;
 
 public class QuestaoDAO {
 	private Connection conexao;
-	private PreparedStatement stm;
+	private PreparedStatement stmt;
 	
 	public QuestaoDAO() {
 		this.conexao = new Conexao().getConexao();
@@ -20,10 +20,11 @@ public class QuestaoDAO {
 		String sql = "insert into questao (professor_cpf, idarea, iddisciplina, idorigem) values (?,?,?,?,?)";
 		try {
 			stmt = conexao.prepareStatement(sql);
-			stmt.setInt(1, alternativa.getIdQuestao());
-			stmt.setInt(2, alternativa.getIdAlternativa());
-			stmt.setString(3,alternativa.getAlternativa());
-			stmt.setString(4, alternativa.getImagem());
+			//stmt.setInt(1, );
+			stmt.setInt(2, questao.getArea().getIdarea());
+			//stmt.setInt(2, aluno.getCidade().getIdCidade());
+			stmt.setInt(3,questao.getDisciplina().getIddisciplina());
+			stmt.setString(4, questao.getOrigem().getIdorigem());
 			stmt.setBoolean(5, alternativa.getCorreta());
 		}catch(Exception e) {
 			throw new RuntimeException(e);

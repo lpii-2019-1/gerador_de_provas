@@ -3,8 +3,8 @@ package gerador_provas.model;
 public class Questao
 {
   private Origem origem;
-  private String area;
-  private String disciplina;
+  private Area area;
+  private Disciplina disciplina;
   private String enunciado;
   private Alternativa[] alternativa;
   private String imagem;
@@ -19,13 +19,13 @@ public class Questao
   
   public void setOrigem(Origem origem) { this.origem = origem; }
   
-  public String getArea() { return area; }
+  public Area getArea() { return area; }
   
-  public void setArea(String area) { this.area = area; }
+  public void setArea(Area area) { this.area = area; }
   
-  public String getDisciplina() { return disciplina; }
+  public Disciplina getDisciplina() { return disciplina; }
   
-  public void setDisciplina(String disciplina) { this.disciplina = disciplina; }
+  public void setDisciplina(Disciplina disciplina) { this.disciplina = disciplina; }
   
   public String getImagem() { return imagem; }
   

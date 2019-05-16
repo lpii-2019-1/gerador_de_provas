@@ -10,16 +10,17 @@ public class TesteArea {
 		AreaDAO areaDAO = new AreaDAO(); 
 		
 		Area a1 = new Area();
-		a1.setArea("Matemática e suas Tecnologias");
+		//a1.setArea("Matemática e suas Tecnologias");
 		
-		areaDAO.cadastrar(a1);
-		
-		
-		System.out.println(a1.getArea());
+		//areaDAO.cadastrar(a1);
 		
 		
+		//System.out.println(a1.getArea());
 		
-		Area areaPesquisada = areaDAO.pesquisar("Linguagens, Códigos e suas Tecnologias");
+		
+		
+		
+		Area areaPesquisada = areaDAO.pesquisar("Matemática e suas Tecnologias");
 	
         
         if (areaPesquisada.getIdarea() != 0) {
@@ -29,6 +30,10 @@ public class TesteArea {
         else {
         	System.out.println("Não encontrado");
         }
+        
+        //a1.setArea(areaPesquisada.getArea());
+        //a1.setIdarea(areaPesquisada.getIdarea());
+        //areaDAO.apagar(a1);
 		
 	}
 
