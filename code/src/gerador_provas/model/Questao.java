@@ -31,17 +31,18 @@ public class Questao
   
   public void setImagem(String imagem) { this.imagem = imagem; }
   
-  public Alternativa[] getAlternativa() { return alternativa;}
+  public Alternativa[] getAlternativa() { return this.alternativa;}
   
   public void setAlternativa(Alternativa[] alternativa) { this.alternativa = alternativa; }
   
 
 
-  public Questao(String enunciado, Origem origem, String area, String disciplina) {
+  public Questao(String enunciado, Alternativa[] alternativa, Origem origem, Area area, Disciplina disciplina) {
 	    this.enunciado = enunciado;
 	    this.origem = origem;
 	    this.area = area;
 	    this.disciplina = disciplina;
+	    this.alternativa = alternativa;
   }  
   
 }

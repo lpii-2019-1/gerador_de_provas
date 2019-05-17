@@ -4,6 +4,10 @@ public class Disciplina {
 	private int iddisciplina;
 	private String disciplina;
 	
+	
+	public Disciplina(String disciplina) {
+		this.disciplina = disciplina;
+	}
 	public int getIddisciplina() {
 		return iddisciplina;
 	}

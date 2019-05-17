@@ -6,9 +6,6 @@ public class Alternativa {
   private boolean correta;
   private String imagem;
   
-  public Alternativa() {
-	  
-  }
   
   public int getIdAlternativa() { return idAlternativa; }
 
