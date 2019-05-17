@@ -21,7 +21,7 @@ public class OrigemDAO {
 	
 	// Cadastrar
 	public void cadastrar(Origem origem) {
-		String sql = "insert into origem (origem,ano) values (? ?)";
+		String sql = "insert into origem (origem, ano) values (?, ?)";
 		try {
 			stmt = conexao.prepareStatement(sql);
 			stmt.setString(1, origem.getOrigem());
@@ -35,22 +35,22 @@ public class OrigemDAO {
 	}
 	
 	// Buscar origem
-	public Origem pesquisar(String nomeOrigem, int anoOrigem) {
+	public Origem pesquisar(Origem origem) {
 		String sql = "select * from origem where origem = ? and ano = ?";
 		try {
 			stmt = conexao.prepareStatement(sql);
-			stmt.setString(1, nomeOrigem);
-			stmt.setInt(2, anoOrigem);
+			stmt.setString(1, origem.getOrigem());
+			stmt.setInt(2, origem.getAno());
 			ResultSet rs = stmt.executeQuery();
-            Origem origem = new Origem();
+            Origem novaOrigem = new Origem();
             
             if (rs.next()) {
-                origem.setIdorigem(rs.getInt("idorigem"));
-                origem.setOrigem(rs.getString("origem"));
-                origem.setAno(rs.getInt("ano"));
+                novaOrigem.setIdorigem(rs.getInt("idorigem"));
+                novaOrigem.setOrigem(rs.getString("origem"));
+                novaOrigem.setAno(rs.getInt("ano"));
             }
             stmt.close();
-            return origem;
+            return novaOrigem;
             	
 		}catch(Exception e) {
 			throw new RuntimeException(e);
