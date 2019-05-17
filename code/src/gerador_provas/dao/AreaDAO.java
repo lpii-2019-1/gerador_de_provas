@@ -34,20 +34,20 @@ public class AreaDAO {
 	}
 	
 	// Buscar area
-	public Area pesquisar(String nomeArea) {
+	public Area pesquisar(Area area) {
 		String sql = "select * from area where area = ?";
 		try {
 			stmt = conexao.prepareStatement(sql);
-			stmt.setString(1, nomeArea);
+			stmt.setString(1, area.getArea());
 			ResultSet rs = stmt.executeQuery();
-            Area area = new Area();
+            Area areaResul = new Area();
             
             if (rs.next()) {
-                area.setIdarea(rs.getInt("idarea"));
-                area.setArea(rs.getString("area"));   
+            	areaResul.setIdarea(rs.getInt("idarea"));
+            	areaResul.setArea(rs.getString("area"));   
             }
             stmt.close();
-            return area;
+            return areaResul;
             	
 		}catch(Exception e) {
 			throw new RuntimeException(e);

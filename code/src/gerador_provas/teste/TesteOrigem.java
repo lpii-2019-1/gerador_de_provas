@@ -22,7 +22,7 @@ public class TesteOrigem {
 		
 		Origem origem = new Origem(origemTexto, origemAno);
 		
-		String resultado = origemc.insere(origem);
+		int resultado = origemc.insere(origem);
 		System.out.println(resultado);
 		
 		//Origem resultado = origemDAO.pesquisar(origem);
