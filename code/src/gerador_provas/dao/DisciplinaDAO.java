@@ -35,28 +35,26 @@ public class DisciplinaDAO {
 			}
 		}
 		
-		// Buscar origem
-		public Origem pesquisar(Disciplia disciplina) {
+		// Buscar disicplina
+		public Disciplina pesquisar(Disciplina disciplina) {
 			String sql = "select * from origem where origem = ? and ano = ?";
 			try {
 				stmt = conexao.prepareStatement(sql);
-				stmt.setString(1, disciplina.getDisicplina());
+				stmt.setString(1, disciplina.getDisciplina());
 				ResultSet rs = stmt.executeQuery();
-	            Origem novaOrigem = new Origem();
+	            Disciplina novaDisicplina = new Disciplina();
 	            
 	            if (rs.next()) {
-	                novaOrigem.setIdorigem(rs.getInt("idorigem"));
-	                novaOrigem.setOrigem(rs.getString("origem"));
-	                novaOrigem.setAno(rs.getInt("ano"));
+	            	novaDisicplina.setIddisciplina(rs.getInt("iddisciplina"));
+	            	novaDisicplina.setDisciplina(rs.getString("disciplina"));
+	            	
 	            }
 	            stmt.close();
-	            return novaOrigem;
+	            return novaDisicplina;
 	            	
 			}catch(Exception e) {
 				throw new RuntimeException(e);
 			}
 		}
-	
-	
 	
 }

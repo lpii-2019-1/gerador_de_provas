@@ -2,6 +2,9 @@ package gerador_provas.teste;
 
 
 import gerador_provas.model.Questao;
+import gerador_provas.control.AreaController;
+import gerador_provas.control.DisciplinaController;
+import gerador_provas.control.OrigemController;
 import gerador_provas.dao.QuestaoDAO;
 import gerador_provas.model.Alternativa;
 import gerador_provas.model.Area;
@@ -28,8 +31,20 @@ public class TesteQuestao {
 				+ "No contexto das aulas de Educação Física escolar, os valores olímpicos e paralímpicos podem ser identificados quando o colega";
 		
 		Origem origem = new Origem("ENEM", 2018);
+		OrigemController origemc = new OrigemController();
+		int idorigem = origemc.insere(origem);
+		
 		Area area = new Area("Linguagens, Códigos e suas Tecnologias");
+		AreaController areac = new AreaController();
+		int idarea = areac.insere(area);
+		
+		
 		Disciplina disciplina =  new Disciplina("Português");
+		DisciplinaController disciplinac = new DisciplinaController();
+		int iddisciplina = disciplinac.insere(disciplina);
+		
+		
+		
 		Alternativa[] alternativas = new Alternativa[5];
 		
 		Alternativa a1 = new Alternativa();
