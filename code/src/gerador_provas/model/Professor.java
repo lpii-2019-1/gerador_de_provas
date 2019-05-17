@@ -1,12 +1,21 @@
 package gerador_provas.model;
 
 public class Professor {
-    private int Cpf;
+    private long Cpf;
     private String nome;
+    private String instituicao;
     private String email;
     private String senha;
 
  
+    public Professor(long Cpf, String nome, String instituicao, String email, String senha) {
+    	this.Cpf = Cpf;
+    	this.nome = nome;
+    	this.setInstituicao(instituicao);
+    	this.email = email;
+    	this.senha = senha;
+    }
+    
     public int getCpf() {
         return Cpf;
     }
@@ -30,6 +39,14 @@ public class Professor {
     }
     public void setSenha(String senha) {
         this.senha = senha;
-    }    
+    }
+
+	public String getInstituicao() {
+		return instituicao;
+	}
+
+	public void setInstituicao(String instituicao) {
+		this.instituicao = instituicao;
+	}    
     
 }

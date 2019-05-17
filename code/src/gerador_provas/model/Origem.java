@@ -2,6 +2,7 @@ package gerador_provas.model;
 
 
 public class Origem {
+	private int idorigem;
 	private String origem;
 	private int ano;
 	
@@ -13,11 +14,21 @@ public class Origem {
 	public int getAno() { return ano; }
 
 	public void setAno(int ano) { this.ano = ano; }
+
+	public int getIdorigem() { return idorigem; }
+
+	public void setIdorigem(int idorigem) { this.idorigem = idorigem; }
 	
 	public Origem(String origem, int ano) {
 		this.origem = origem;
 		this.ano = ano;
 	}
+	
+	public Origem() {
+		
+	}
+
+
 	
 	
 	

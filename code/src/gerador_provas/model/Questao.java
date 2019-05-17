@@ -2,6 +2,7 @@ package gerador_provas.model;
 
 public class Questao
 {
+  private Professor professor;
   private Origem origem;
   private Area area;
   private Disciplina disciplina;
@@ -10,6 +11,9 @@ public class Questao
   private String imagem;
   
   
+  public Professor getProfessor() {return professor;}
+  
+  public void setProfessor(Professor professor) {this.professor = professor;}
   
   public String getEnunciado() { return enunciado; }
   
@@ -37,12 +41,13 @@ public class Questao
   
 
 
-  public Questao(String enunciado, Alternativa[] alternativa, Origem origem, Area area, Disciplina disciplina) {
-	    this.enunciado = enunciado;
-	    this.origem = origem;
-	    this.area = area;
-	    this.disciplina = disciplina;
-	    this.alternativa = alternativa;
+  public Questao(Professor professor, String enunciado, Alternativa[] alternativa, Origem origem, Area area, Disciplina disciplina) {
+	  this.professor = professor;  
+	  this.enunciado = enunciado;
+	  this.origem = origem;
+	  this.area = area;
+	  this.disciplina = disciplina;
+	  this.alternativa = alternativa;
   }  
   
 }
