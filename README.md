@@ -1,4 +1,6 @@
-lpii-projeto-pratico-2019-1-gerador_de_provas
+# Gerador de Provas
 
-
-um texto qualquer
+### Autores
+<br><sub>Bruno Geovane</sub>(https://github.com/brunogeovane) 
+<br><sub>Gustavo Faquim</sub>(https://github.com/faquimgustavo)
+<br><sub>Ricardo Takayuki</sub>(https://github.com/ricardotakayuki)
