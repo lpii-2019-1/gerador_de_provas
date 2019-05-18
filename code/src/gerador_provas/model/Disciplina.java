@@ -8,6 +8,11 @@ public class Disciplina {
 	public Disciplina(String disciplina) {
 		this.disciplina = disciplina;
 	}
+	
+	public Disciplina() {
+		
+	}
+	
 	public int getIddisciplina() {
 		return iddisciplina;
 	}
