@@ -8,7 +8,7 @@ public class ProfessorController {
 		ProfessorDAO professorDAO = new ProfessorDAO();
 		Professor resultado = professorDAO.pesquisar(professor); 
 		
-		if(resultado.getCpf() == professor.getCpf() || resultado.getEmail().equals(professor.getEmail())) {
+		if(resultado.getCpf() == professor.getCpf()) {
 			return resultado.getCpf();
 		}
 		else {

@@ -19,7 +19,7 @@ public class Professor {
     public long getCpf() {
         return Cpf;
     }
-    public void setCpf(int Cpf) {
+    public void setCpf(Long Cpf) {
         this.Cpf = Cpf;
     }
     public String getNome() {

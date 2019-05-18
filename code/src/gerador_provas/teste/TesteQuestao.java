@@ -6,6 +6,7 @@ import gerador_provas.model.Questao;
 import gerador_provas.control.AreaController;
 import gerador_provas.control.DisciplinaController;
 import gerador_provas.control.OrigemController;
+import gerador_provas.control.ProfessorController;
 import gerador_provas.dao.QuestaoDAO;
 import gerador_provas.model.Alternativa;
 import gerador_provas.model.Disciplina;
@@ -22,9 +23,8 @@ public class TesteQuestao {
 		
 		Professor professor = new Professor(32456789143L, "Luiz Fernando", "Colégio Rua XX", "luizfernando@gmail.com", "abcd1234");
 		
-		Origem origem = new Origem("ENEM", 2018);
-		OrigemController origemc = new OrigemController();
-		int idorigem = origemc.insere(origem);
+		ProfessorController professorc = new ProfessorController();
+		long professor_cpf = professorc.insere(professor);
 		
 		
 		String enunciado = "Tanto os Jogos Olímpicos quanto os Paralímpicos são mais que uma corrida por recordes, medalhas e busca de "
@@ -85,7 +85,8 @@ public class TesteQuestao {
 		
 		
 		
-		Questao questao = new Questao(professor, enunciado, alternativas, origem, area, disciplina);
+		Questao questao = new Questao(professor, area, disciplina, origem, enunciado, alternativas);
+		
 		
 		//Alternativa[] alt = q1.getAlternativa();
 		
