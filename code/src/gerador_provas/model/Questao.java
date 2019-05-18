@@ -1,4 +1,5 @@
 package gerador_provas.model;
+import java.sql.Blob;
 
 public class Questao
 {
@@ -8,7 +9,8 @@ public class Questao
   private Disciplina disciplina;
   private String enunciado;
   private Alternativa[] alternativa;
-  private String imagem;
+  private Blob imagem;
+
   
   
   public Professor getProfessor() {return professor;}
@@ -31,9 +33,9 @@ public class Questao
   
   public void setDisciplina(Disciplina disciplina) { this.disciplina = disciplina; }
   
-  public String getImagem() { return imagem; }
+  public Blob getImagem() { return imagem; }
   
-  public void setImagem(String imagem) { this.imagem = imagem; }
+  public void Blob(Blob imagem) { this.imagem = imagem; }
   
   public Alternativa[] getAlternativa() { return this.alternativa;}
   
@@ -41,13 +43,14 @@ public class Questao
   
 
 
-  public Questao(Professor professor, String enunciado, Alternativa[] alternativa, Origem origem, Area area, Disciplina disciplina) {
+  public Questao(Professor professor, String enunciado, Alternativa[] alternativa, Origem origem, Area area, Disciplina disciplina, Blob imagem) {
 	  this.professor = professor;  
 	  this.enunciado = enunciado;
 	  this.origem = origem;
 	  this.area = area;
 	  this.disciplina = disciplina;
 	  this.alternativa = alternativa;
+	  this.imagem = imagem;
   }  
   
 }

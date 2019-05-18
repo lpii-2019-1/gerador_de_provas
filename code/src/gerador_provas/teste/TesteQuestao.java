@@ -1,7 +1,14 @@
 package gerador_provas.teste;
 
 
+import gerador_provas.conexao.Conexao;
+
+import gerador_provas.model.Area;
+
 import gerador_provas.model.Questao;
+
+import java.sql.PreparedStatement;
+
 import gerador_provas.dao.QuestaoDAO;
 import gerador_provas.model.Alternativa;
 import gerador_provas.model.Area;
@@ -57,6 +64,10 @@ public class TesteQuestao {
 		alternativas[2] = a3;
 		alternativas[3] = a4;
 		alternativas[4] = a5;
+		
+		
+		
+		
 		
 		
 		

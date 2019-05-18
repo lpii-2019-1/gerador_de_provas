@@ -1,5 +1,8 @@
 package gerador_provas.dao;
 
+import java.io.File;
+
+import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -17,15 +20,21 @@ public class QuestaoDAO {
 	}
 	
 	public void cadastrar(Questao questao) {
-		String sql = "insert into questao (professor_cpf, idarea, iddisciplina, idorigem) values (?,?,?,?)";
+		String sql = "insert into questao (professor_cpf, idarea, iddisciplina, idorigem, imagem) values (?,?,?,?,?)";
 		try {
 			stmt = conexao.prepareStatement(sql);
 			stmt.setInt(1,questao.getProfessor().getCpf() );
 			stmt.setInt(2, questao.getArea().getIdarea());
 			stmt.setInt(3,questao.getDisciplina().getIddisciplina());
 			stmt.setString(4, questao.getOrigem().getOrigem());
+			stmt.setBlob(5, questao.getImagem());
+			stmt.execute(); 
+			stmt.close();
 		}catch(Exception e) {
 			throw new RuntimeException(e);
 		}
+		
 	}
 }
+	
+
