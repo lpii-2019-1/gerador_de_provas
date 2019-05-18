@@ -3,13 +3,11 @@ package gerador_provas.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import gerador_provas.conexao.Conexao;
 import gerador_provas.model.Disciplina;
-import gerador_provas.model.Origem;
+
 
 
 
@@ -17,7 +15,7 @@ public class DisciplinaDAO {
 	private Connection conexao;
 	private PreparedStatement stmt;
 	
-	public void DisicplinaDAO() {
+	public DisciplinaDAO() {
 		this.conexao = new Conexao().getConexao();
 	}
 	
@@ -37,7 +35,7 @@ public class DisciplinaDAO {
 		
 		// Buscar disicplina
 		public Disciplina pesquisar(Disciplina disciplina) {
-			String sql = "select * from origem where origem = ? and ano = ?";
+			String sql = "select * from disciplina where disciplina = ?";
 			try {
 				stmt = conexao.prepareStatement(sql);
 				stmt.setString(1, disciplina.getDisciplina());

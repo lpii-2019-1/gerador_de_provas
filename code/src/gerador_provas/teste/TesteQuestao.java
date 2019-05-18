@@ -58,24 +58,29 @@ public class TesteQuestao {
 		Alternativa[] alternativas = new Alternativa[5];
 		
 		Alternativa a1 = new Alternativa();
-		a1.setAlternativa("Texto1");
+		a1.setAlternativa("procura entender o próximo, assumindo atitudes positivas como simpatia, empatia, "
+				+ "honestidade, compaixão, confiança e solidariedade, o que caracteriza o valor da igualdade. ");
 		a1.setCorreta(false);
 		
 		Alternativa a2 = new Alternativa();
-		a2.setAlternativa("Texto2");
+		a2.setAlternativa("Faz com que todos possam ser iguais e receber o mesmo tratamento, assegurando imparcialidade, "
+				+ "oportunidades e tratamentos iguais a todos, o que caracteriza o valor da amizade.");
 		a2.setCorreta(false);
 		
 		Alternativa a3 = new Alternativa();
-		a3.setAlternativa("Texto3");
-		a3.setCorreta(true);
+		a3.setAlternativa("Dá o melhor de si na vivência das diversas atividades relacionadas ao esporte ou aos jogos, "
+				+ "participando e progredindo de acordo com seus objetivos, o que caracteriza o valor da coragem. ");
+		a3.setCorreta(false);
 		
 		Alternativa a4 = new Alternativa();
-		a4.setAlternativa("Texto4");
+		a4.setAlternativa("Manifesta a habilidade de enfrentar a dor, o sofrimento, o medo, a incerteza e a intimidação nas atividades,"
+				+ " agindo corretamente contra a vergonha, a desonra e o desânimo, o que caracteriza o valor da determinação. ");
 		a4.setCorreta(false);
 		
 		Alternativa a5 = new Alternativa();
-		a5.setAlternativa("Texto5");
-		a5.setCorreta(false);
+		a5.setAlternativa("Manifesta a habilidade de enfrentar a dor, o sofrimento, o medo, a incerteza e a intimidação nas atividades, "
+				+ "agindo corretamente contra a vergonha, a desonra e o desânimo, o que caracteriza o valor da determinação. ");
+		a5.setCorreta(true);
 		
 		alternativas[0] = a1;
 		alternativas[1] = a2;
@@ -85,20 +90,14 @@ public class TesteQuestao {
 		
 		
 		
-		
-		
-		
-		
 		Questao q1 = new Questao(professor, enunciado, alternativas, origem, area, disciplina);
 		
-		Alternativa[] alt = q1.getAlternativa();
+		//Alternativa[] alt = q1.getAlternativa();
+		
+		questaoDAO.cadastrar(questao);
 		
 		
-		System.out.println("Origem " + q1.getOrigem().getOrigem() + "" + q1.getOrigem().getAno());
-		System.out.println("Enunciado: \n" + q1.getEnunciado());
-		for(int i=0; i<5;i++) {
-			System.out.println(alt[i].getAlternativa());
-		}
+		
 	}
 
 }
