@@ -1,23 +1,13 @@
 package gerador_provas.teste;
 
 
-import gerador_provas.conexao.Conexao;
-
 import gerador_provas.model.Area;
-
 import gerador_provas.model.Questao;
-<<<<<<< HEAD
-
-import java.sql.PreparedStatement;
-
-=======
 import gerador_provas.control.AreaController;
 import gerador_provas.control.DisciplinaController;
 import gerador_provas.control.OrigemController;
->>>>>>> 974248c8d2eecf9aa475acae4271e0a9575db05e
 import gerador_provas.dao.QuestaoDAO;
 import gerador_provas.model.Alternativa;
-import gerador_provas.model.Area;
 import gerador_provas.model.Disciplina;
 import gerador_provas.model.Origem;
 import gerador_provas.model.Professor;
@@ -31,6 +21,11 @@ public class TesteQuestao {
 		
 		
 		Professor professor = new Professor(32456789143L, "Luiz Fernando", "Colégio Rua XX", "luizfernando@gmail.com", "abcd1234");
+		
+		Origem origem = new Origem("ENEM", 2018);
+		OrigemController origemc = new OrigemController();
+		int idorigem = origemc.insere(origem);
+		
 		
 		String enunciado = "Tanto os Jogos Olímpicos quanto os Paralímpicos são mais que uma corrida por recordes, medalhas e busca de "
 				+ "excelência. Por trás deles está a filosofia do barão Pierre de Coubertin, fundados do Movimento Olímpico. "

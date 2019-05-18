@@ -7,6 +7,7 @@ import gerador_provas.model.Origem;
 public class TesteOrigem {
 	
 	public static void main(String[] args) {
+		
 		OrigemController origemc = new OrigemController();
 		Scanner input = new Scanner(System.in);
 		String origemTexto;

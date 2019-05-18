@@ -16,7 +16,7 @@ public class Professor {
     	this.senha = senha;
     }
     
-    public int getCpf() {
+    public long getCpf() {
         return Cpf;
     }
     public void setCpf(int Cpf) {

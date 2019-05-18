@@ -20,14 +20,15 @@ public class QuestaoDAO {
 	}
 	
 	public void cadastrar(Questao questao) {
-		String sql = "insert into questao (professor_cpf, idarea, iddisciplina, idorigem, imagem) values (?,?,?,?,?)";
+		String sql = "insert into questao (professor_cpf, idarea, iddisciplina, idorigem, enunciado, imagem) values (?,?,?,?,?,?)";
 		try {
 			stmt = conexao.prepareStatement(sql);
-			stmt.setInt(1,questao.getProfessor().getCpf() );
+			stmt.setLong(1,questao.getProfessor().getCpf() );
 			stmt.setInt(2, questao.getArea().getIdarea());
 			stmt.setInt(3,questao.getDisciplina().getIddisciplina());
-			stmt.setString(4, questao.getOrigem().getOrigem());
-			stmt.setBlob(5, questao.getImagem());
+			stmt.setInt(4, questao.getOrigem().getIdorigem());
+			stmt.setString(5, questao.getEnunciado());
+			stmt.setBlob(6, questao.getImagem());
 			stmt.execute(); 
 			stmt.close();
 		}catch(Exception e) {

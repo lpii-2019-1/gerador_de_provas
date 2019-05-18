@@ -43,14 +43,13 @@ public class Questao
   
 
 
-  public Questao(Professor professor, String enunciado, Alternativa[] alternativa, Origem origem, Area area, Disciplina disciplina, Blob imagem) {
+  public Questao(Professor professor, String enunciado, Alternativa[] alternativa, Origem origem, Area area, Disciplina disciplina) {
 	  this.professor = professor;  
 	  this.enunciado = enunciado;
 	  this.origem = origem;
 	  this.area = area;
 	  this.disciplina = disciplina;
 	  this.alternativa = alternativa;
-	  this.imagem = imagem;
   }  
   
 }
