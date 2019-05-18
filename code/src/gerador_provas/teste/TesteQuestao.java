@@ -90,7 +90,7 @@ public class TesteQuestao {
 		
 		
 		
-		Questao q1 = new Questao(professor, enunciado, alternativas, origem, area, disciplina);
+		Questao questao = new Questao(professor, enunciado, alternativas, origem, area, disciplina);
 		
 		//Alternativa[] alt = q1.getAlternativa();
 		

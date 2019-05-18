@@ -15,13 +15,13 @@ public class DisciplinaController {
 		// 		-> Se inserida retorna o id;
 		//		-> Se não inserida retorna o id após inserir.
 		
-		if(resultado.getDisciplina() != disciplina.getDisciplina()) {
+		if(resultado.getDisciplina().equals(disciplina.getDisciplina())) {
+			return resultado.getIddisciplina();
+		}
+		else {
 			disciplinaDAO.cadastrar(disciplina);
 			Disciplina resul = disciplinaDAO.pesquisar(disciplina);
 			return resul.getIddisciplina();
-			
 		}
-		return resultado.getIddisciplina();
-		
 	}
 }
