@@ -9,13 +9,13 @@ public class AreaController {
 		AreaDAO areaDAO = new AreaDAO();
 		Area resultado = areaDAO.pesquisar(area);
 		
-		if(resultado.getArea() != area.getArea()) {
+		if(resultado.getArea().equals(area.getArea()) ) {
+			return resultado.getIdarea();
+		}
+		else {
 			areaDAO.cadastrar(area);
 			Area resul = areaDAO.pesquisar(area);
 			return resul.getIdarea();
-		}
-		else {
-			return resultado.getIdarea();
 		}
 	}
 }

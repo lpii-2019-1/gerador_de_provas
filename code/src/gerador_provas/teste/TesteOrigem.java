@@ -2,15 +2,12 @@ package gerador_provas.teste;
 import java.util.Scanner;
 
 import gerador_provas.control.OrigemController;
-import gerador_provas.dao.OrigemDAO;
 import gerador_provas.model.Origem;
 
 public class TesteOrigem {
 	
 	public static void main(String[] args) {
 		OrigemController origemc = new OrigemController();
-		OrigemDAO origemDAO = new OrigemDAO();
-		
 		Scanner input = new Scanner(System.in);
 		String origemTexto;
 		int origemAno;
