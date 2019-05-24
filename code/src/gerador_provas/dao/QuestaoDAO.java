@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
+import dao.CidadeDAO;
 import gerador_provas.conexao.Conexao;
 import gerador_provas.model.Professor;
 import gerador_provas.model.Questao;
@@ -46,12 +47,32 @@ public class QuestaoDAO {
 			ResultSet rs = stmt.executeQuery();
 			
 			if(rs.next()) {
-				Questao questaoResul = new Questao(rs.getInt("idquestao"),rs.getLong("professor_cpf"), rs.getInt("idarea"), rs.getInt("iddisciplina"), rs.getInt("idorigem"), rs.getString("enunciado"));
-				stmt.close();
-	            return questaoResul;
+				
+				Questao questaoResul = new Questao();
+				questaoResul.setIdquestao(rs.getInt("idquestao"));	
+				
+	
+	            ProfessorDAO professorDAO = new ProfessorDAO();
+	            questaoResul.setProfessor(professorDAO.pesquisarCpf(rs.getLong("professor_cpf")));
+	                
+	             
+	            AreaDAO areaDAO = new AreaDAO();
+	            questaoResul.setArea(areaDAO.pesquisarId(rs.getInt("idarea")));
+	            
+	            DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
+	            questaoResul.setDisciplina(disciplinaDAO.pesquisarId(rs.getInt("iddisciplina")));
+	            
+	            OrigemDAO origemDAO = new OrigemDAO();
+	            questaoResul.setOrigem(origemDAO.pesquisarId(rs.getInt("idorigem")));
+	            
+	            questaoResul.setEnunciado(rs.getString("enunciado"));
+	            questaoResul.SetImagem(rs.getBlob("imagem"));
+	            
+	             stmt.close();
+	             return questaoResul;
 			}
 			else {
-				Questao questaoResul = new Questao(0,null,0,0,0,null);
+				Questao questaoResul = new Questao();
 				stmt.close();
 	            return questaoResul;
 			}

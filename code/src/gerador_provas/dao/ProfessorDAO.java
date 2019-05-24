@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 import gerador_provas.conexao.Conexao;
 import gerador_provas.model.Professor;
+import model.Cidade;
 
 
 
@@ -58,6 +59,23 @@ public class ProfessorDAO {
 		}
 		
 	} // Fim Pesquisa
+	
+	public Professor pesquisarCpf(long cpf) {
+		String sql = "select * from professor where cpf = ?";
+		try {
+			stmt = conexao.prepareStatement(sql);
+			stmt.setLong(1, cpf);
+			ResultSet rs = stmt.executeQuery();
+			if (rs.next()) {
+				Professor professor_cpf = new Professor(rs.getLong("cpf"), rs.getString("nome"), rs.getString("instituicao"), rs.getString("email"), rs.getString("senha"));
+				return professor_cpf;
+			}
+			
+		}catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+		return null;
+	}
 	
 	
 }

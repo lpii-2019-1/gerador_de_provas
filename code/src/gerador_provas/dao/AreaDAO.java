@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import gerador_provas.conexao.Conexao;
 import gerador_provas.model.Area;
+import model.Cidade;
 
 
 
@@ -52,6 +53,26 @@ public class AreaDAO {
 		}catch(Exception e) {
 			throw new RuntimeException(e);
 		}
+	}
+	
+	public Area pesquisarId(int Idarea) {
+		String sql = "select * from area where idarea = ?";
+		try {
+			
+			stmt = conexao.prepareStatement(sql);
+			stmt.setInt(1, Idarea);
+			ResultSet rs = stmt.executeQuery();
+			Area area = new Area();
+			if (rs.next()) {
+				area.setIdarea(rs.getInt("idArea"));
+				area.setArea(rs.getString("area"));
+			}
+			return area;
+			
+		}catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+		return null;
 	}
 	
 	// Lista todas as areas

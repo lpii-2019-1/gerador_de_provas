@@ -9,6 +9,7 @@ public class TesteDisciplina {
 		DisciplinaController disciplinac = new DisciplinaController();
 		Disciplina disciplina = new Disciplina("Português");
 		
+		
 		int resultado = disciplinac.insere(disciplina);
 		System.out.println(resultado);
 		

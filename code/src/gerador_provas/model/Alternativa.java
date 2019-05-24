@@ -1,11 +1,18 @@
 package gerador_provas.model;
 
+import java.sql.Blob;
+
 public class Alternativa {
+  private int idQuestao;
   private int idAlternativa;
   private String alternativa;
   private boolean correta;
-  private String imagem;
+  private Blob imagem;
   
+  
+  public int getIdQuestao() { return idQuestao; }
+
+  public void setIdQuestao(int idQuestao) { this.idQuestao = idQuestao; }
   
   public int getIdAlternativa() { return idAlternativa; }
 
@@ -19,8 +26,8 @@ public class Alternativa {
   
   public void setCorreta(boolean correta) { this.correta = correta; }
   
-  public String getImagem() {return imagem; }
-
-  public void setImagem(String imagem) { this.imagem = imagem; }
+  public Blob getImagem() { return imagem; }
+  
+  public void setImagem(Blob imagem) { this.imagem = imagem; }
 
 }

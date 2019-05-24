@@ -9,8 +9,6 @@ import gerador_provas.conexao.Conexao;
 import gerador_provas.model.Disciplina;
 
 
-
-
 public class DisciplinaDAO {
 	private Connection conexao;
 	private PreparedStatement stmt;
@@ -39,6 +37,27 @@ public class DisciplinaDAO {
 			try {
 				stmt = conexao.prepareStatement(sql);
 				stmt.setString(1, disciplina.getDisciplina());
+				ResultSet rs = stmt.executeQuery();
+	            Disciplina novaDisicplina = new Disciplina();
+	            
+	            if (rs.next()) {
+	            	novaDisicplina.setIddisciplina(rs.getInt("iddisciplina"));
+	            	novaDisicplina.setDisciplina(rs.getString("disciplina"));
+	            	
+	            }
+	            stmt.close();
+	            return novaDisicplina;
+	            	
+			}catch(Exception e) {
+				throw new RuntimeException(e);
+			}
+		}
+		
+		public Disciplina pesquisarId(int iddisciplina) {
+			String sql = "select * from disciplina where iddisciplina = ?";
+			try {
+				stmt = conexao.prepareStatement(sql);
+				stmt.setInt(1, iddisciplina);
 				ResultSet rs = stmt.executeQuery();
 	            Disciplina novaDisicplina = new Disciplina();
 	            

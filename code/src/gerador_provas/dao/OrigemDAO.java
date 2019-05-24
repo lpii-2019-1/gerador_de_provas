@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import gerador_provas.conexao.Conexao;
 import gerador_provas.model.Origem;
+import model.Cidade;
 
 
 
@@ -56,6 +57,24 @@ public class OrigemDAO {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	public Origem pesquisarId(int idorigem) {
+		String sql = "SELECT * FROM origem WHERE idorigem = ?";
+		try {
+			stmt = conexao.prepareStatement(sql);
+			stmt.setInt(1, idorigem);
+			ResultSet rs = stmt.executeQuery();
+			Origem origem = new Origem();
+			if (rs.next()) {
+				origem.setIdorigem(rs.getInt("idorigem"));
+				origem.setOrigem(rs.getString("origem"));
+			}
+			return origem;
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
 	
 	// Lista todas as areas
 	 public ArrayList<Origem> listarTudo() {
