@@ -38,15 +38,18 @@ public class TesteQuestao {
 		Origem origem = new Origem("ENEM", 2018);
 		OrigemController origemc = new OrigemController();
 		int idorigem = origemc.insere(origem);
+		Origem novaOrigem = new Origem(idorigem, origem.getOrigem(), origem.getAno());
 		
 		Area area = new Area("Linguagens, Códigos e suas Tecnologias");
 		AreaController areac = new AreaController();
 		int idarea = areac.insere(area);
+		Area novaArea = new Area(idarea, area.getArea());
 		
 		
 		Disciplina disciplina =  new Disciplina("Português");
 		DisciplinaController disciplinac = new DisciplinaController();
 		int iddisciplina = disciplinac.insere(disciplina);
+		Disciplina novaDisciplina = new Disciplina(iddisciplina, disciplina.getDisciplina());
 		
 		
 		
@@ -85,10 +88,21 @@ public class TesteQuestao {
 		
 		
 		
-		Questao questao = new Questao(professor, area, disciplina, origem, enunciado, alternativas);
+		Questao questao = new Questao(professor, novaArea, novaDisciplina, novaOrigem, enunciado, alternativas);
 		
+		/*System.out.println("Professor CPF: "+ professor_cpf);
+		System.out.println("Origem: "+ idorigem);
+		System.out.println("Area: "+ idarea);
+		System.out.println("Disiplina: "+ iddisciplina);
+		System.out.println("Enunciado: "+ enunciado);
 		
-		//Alternativa[] alt = q1.getAlternativa();
+		System.out.println("--------------------");
+		System.out.println("Professor CPF: " + questao.getProfessor().getCpf());
+		System.out.println("Origem: " + questao.getOrigem().getIdorigem());
+		System.out.println("Area: " + questao.getArea().getIdarea());
+		System.out.println("Disiplina: " + questao.getDisciplina().getIddisciplina());
+		System.out.println("Enunciado: " + questao.getEnunciado());
+		//Alternativa[] alt = q1.getAlternativa(); */
 		
 		questaoDAO.cadastrar(questao);
 		

@@ -18,5 +18,9 @@ public class Area {
 	public Area(String area) {
 		this.area = area;
 	}
+	public Area(int idarea, String area) {
+		this.idarea = idarea;
+		this.area = area;
+	}
 	
 }

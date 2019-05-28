@@ -24,6 +24,12 @@ public class Origem {
 		this.ano = ano;
 	}
 	
+	public Origem(int idorigem, String origem, int ano) {
+		this.idorigem = idorigem;
+		this.origem = origem;
+		this.ano = ano;
+	}
+	
 	public Origem() {
 		
 	}

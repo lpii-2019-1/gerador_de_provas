@@ -45,10 +45,10 @@ public class Questao
 
  
  public Questao(Professor professor, Area area, Disciplina disciplina, Origem origem, String enunciado, Alternativa[] alternativas) {
-	  this.professor.setCpf(professor.getCpf());
-	  this.origem.setIdorigem(origem.getIdorigem());
-	  this.area.setIdarea(area.getIdarea());
-	  this.disciplina.setIddisciplina(disciplina.getIddisciplina());
+	  this.professor = professor;
+	  this.origem = origem;
+	  this.area = area;
+	  this.disciplina = disciplina;
 	  this.enunciado = enunciado;
 	  this.alternativa = alternativas;
  }
