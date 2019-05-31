@@ -27,6 +27,9 @@ public class AlternativaDAO {
 			stmt.setString(3,alternativa.getAlternativa());
 			stmt.setBlob(4, alternativa.getImagem());
 			stmt.setBoolean(5, alternativa.getCorreta());
+			stmt.execute(); 
+			stmt.close();
+		
 		}catch(Exception e) {
 			throw new RuntimeException(e);
 		}

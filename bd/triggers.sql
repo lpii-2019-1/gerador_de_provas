@@ -14,7 +14,10 @@ before delete on questao for each row
 insert into auditoria
 set acao = 'delete', 
 valorAntes = OLD.enunciado,
-valorDepois = NULL,
+valorDepois = 'NULO',
 campoAlterado = 'enunciado',
 dataAlteracao = NOW(),
 usuario = session_user();
+
+
+/*DROP TRIGGER questaoBeforeDelete; */

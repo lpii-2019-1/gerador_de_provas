@@ -6,9 +6,11 @@ import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 
 import dao.CidadeDAO;
 import gerador_provas.conexao.Conexao;
+import gerador_provas.model.Alternativa;
 import gerador_provas.model.Professor;
 import gerador_provas.model.Questao;
 
@@ -24,7 +26,7 @@ public class QuestaoDAO {
 	public void cadastrar(Questao questao) {
 		String sql = "insert into questao (professor_cpf, idarea, iddisciplina, idorigem, enunciado, imagem) values (?,?,?,?,?,?)";
 		try {
-			stmt = conexao.prepareStatement(sql);
+			stmt= conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			stmt.setLong(1,questao.getProfessor().getCpf() );
 			stmt.setInt(2, questao.getArea().getIdarea());
 			stmt.setInt(3,questao.getDisciplina().getIddisciplina());
@@ -32,7 +34,26 @@ public class QuestaoDAO {
 			stmt.setString(5, questao.getEnunciado());
 			stmt.setBlob(6,questao.getImagem());
 			stmt.execute(); 
+			
+			ResultSet rs = stmt.getGeneratedKeys();
+			rs.next();
+			System.out.println(rs.getInt(1));
+			
+			AlternativaDAO alternativaDAO = new AlternativaDAO();
+			questao.setIdquestao(rs.getInt(1));
+			
+			for(int i=0; i < questao.getAlternativas().length; i++) {
+				alternativaDAO.cadastrar(questao.getAlternativas()[i], questao);
+			}
+			
+			
 			stmt.close();
+			
+			
+
+			// Cadastrar alternativa aqui! -> chamar classe AlternativaDAO;
+			// Fazer for para passar por array alternativas e salvar cada uma.
+			
 		}catch(Exception e) {
 			throw new RuntimeException(e);
 		}	

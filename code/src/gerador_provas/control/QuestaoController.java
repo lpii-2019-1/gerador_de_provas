@@ -28,7 +28,7 @@ public class QuestaoController {
 		int idorigem = origemc.insere(questao.getOrigem());
 		
 		AlternativaController alternativac = new AlternativaController();
-		int idalternativa = alternativac.insere(questao.getAlternativa());
+		int idalternativa = alternativac.insere(questao.getAlternativas());
 		
 		Questao resultado = questaoDAO.pesquisar(questao);
 		

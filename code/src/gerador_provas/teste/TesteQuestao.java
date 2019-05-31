@@ -18,9 +18,6 @@ public class TesteQuestao {
 	public static void main(String[] args) {
 		
 		
-		QuestaoDAO questaoDAO = new QuestaoDAO();
-		
-		
 		Professor professor = new Professor(32456789143L, "Luiz Fernando", "Colégio Rua XX", "luizfernando@gmail.com", "abcd1234");
 		
 		ProfessorController professorc = new ProfessorController();
@@ -38,18 +35,19 @@ public class TesteQuestao {
 		Origem origem = new Origem("ENEM", 2018);
 		OrigemController origemc = new OrigemController();
 		int idorigem = origemc.insere(origem);
-		Origem novaOrigem = new Origem(idorigem, origem.getOrigem(), origem.getAno());
+		origem.setIdorigem(idorigem);
 		
 		Area area = new Area("Linguagens, Códigos e suas Tecnologias");
 		AreaController areac = new AreaController();
-		int idarea = areac.insere(area);
-		Area novaArea = new Area(idarea, area.getArea());
+		area.setIdarea(areac.insere(area));
+		
+		//area.setIdarea(idarea);
 		
 		
 		Disciplina disciplina =  new Disciplina("Português");
 		DisciplinaController disciplinac = new DisciplinaController();
 		int iddisciplina = disciplinac.insere(disciplina);
-		Disciplina novaDisciplina = new Disciplina(iddisciplina, disciplina.getDisciplina());
+		disciplina.setIddisciplina(iddisciplina);
 		
 		
 		
@@ -90,11 +88,7 @@ public class TesteQuestao {
 		
 		Questao questao = new Questao(professor, novaArea, novaDisciplina, novaOrigem, enunciado, alternativas);
 		
-		/*System.out.println("Professor CPF: "+ professor_cpf);
-		System.out.println("Origem: "+ idorigem);
-		System.out.println("Area: "+ idarea);
-		System.out.println("Disiplina: "+ iddisciplina);
-		System.out.println("Enunciado: "+ enunciado);
+		// Problema em passar e pegar o array de alternativas.
 		
 		System.out.println("--------------------");
 		System.out.println("Professor CPF: " + questao.getProfessor().getCpf());
@@ -102,8 +96,17 @@ public class TesteQuestao {
 		System.out.println("Area: " + questao.getArea().getIdarea());
 		System.out.println("Disiplina: " + questao.getDisciplina().getIddisciplina());
 		System.out.println("Enunciado: " + questao.getEnunciado());
-		//Alternativa[] alt = q1.getAlternativa(); */
+		System.out.println("Alternativas: \n");
+		//System.out.println(questao.getAlternativa()[1]);
+		System.out.println(questao.getAlternativas()[0].getAlternativa());
 		
+		/*for(int i=0; i<= questao.getAlternativa().length; i++) {
+			System.out.println(alternativas[i]);
+		}*/
+		
+		//Alternativa[] alt = q1.getAlternativa(); 
+		
+		QuestaoDAO questaoDAO = new QuestaoDAO();
 		questaoDAO.cadastrar(questao);
 		
 		

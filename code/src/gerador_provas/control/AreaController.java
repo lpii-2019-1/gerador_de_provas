@@ -14,8 +14,7 @@ public class AreaController {
 		}
 		else {
 			areaDAO.cadastrar(area);
-			Area resul = areaDAO.pesquisar(area);
-			return resul.getIdarea();
+			return area.getIdarea();
 		}
 	}
 }

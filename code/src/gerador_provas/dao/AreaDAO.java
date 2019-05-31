@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 import gerador_provas.conexao.Conexao;
 import gerador_provas.model.Area;
-import model.Cidade;
+
 
 
 
@@ -20,21 +20,27 @@ public class AreaDAO {
 		this.conexao = new Conexao().getConexao();
 	}
 	
-	// Cadastrar
-	public void cadastrar(Area area) {
+	
+	public Area cadastrar(Area area) {
 		String sql = "insert into area (area) values (?)";
 		try {
 			stmt = conexao.prepareStatement(sql);
 			stmt.setString(1, area.getArea());
 			stmt.execute();
+			
+			ResultSet rs = stmt.getGeneratedKeys();
+			rs.next();
+			area.setIdarea(rs.getInt(1));
 			stmt.close();
+			
+			return area; 
 			
 		}catch(Exception e) {
 			throw new RuntimeException(e);
 		}
 	}
 	
-	// Buscar area
+	
 	public Area pesquisar(Area area) {
 		String sql = "select * from area where area = ?";
 		try {
@@ -72,10 +78,9 @@ public class AreaDAO {
 		}catch (Exception e) {
 			throw new RuntimeException(e);
 		}
-		return null;
 	}
 	
-	// Lista todas as areas
+	
 	 public ArrayList<Area> listarTudo() {
 		String sql = "select * from area";
 		try {
@@ -99,7 +104,7 @@ public class AreaDAO {
 		
 	} 
 	 
-	 // Apagar 
+	 
 	 public void apagar(Area area) {
 		 String sql = "delete from area where idarea= ?";
 		 try {
@@ -112,6 +117,5 @@ public class AreaDAO {
 			 throw new RuntimeException(e);
 		 }
 	 }
-	 
 	
 }

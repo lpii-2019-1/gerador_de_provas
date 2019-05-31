@@ -38,7 +38,7 @@ public class Questao
   
   public void SetImagem(Blob imagem) { this.imagem = imagem; }
   
-  public Alternativa[] getAlternativa() { return this.alternativa;}
+  public Alternativa[] getAlternativas() { return alternativa;}
   
   public void setAlternativa(Alternativa[] alternativa) { this.alternativa = alternativa; }
   
