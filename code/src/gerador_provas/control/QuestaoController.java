@@ -36,18 +36,15 @@ public class QuestaoController {
 		
 		if(resultado.getEnunciado() != null) {
 			if(resultado.getEnunciado().equals(questao.getEnunciado())) {
-				System.out.println("Entrouuuu");
 				return resultado.getIdquestao();
 			}
+		 return resultado.getIdquestao();
 		}
 		else {
-			System.out.println("Não entouuu");
-		}
-		/*else {
 			questaoDAO.cadastrar(questao);
 			Questao resul = questaoDAO.pesquisar(questao);
 			return resul.getIdquestao();
-		} */
-		return 0;
+		}
+		
 	}
 }
