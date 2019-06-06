@@ -8,7 +8,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import dao.CidadeDAO;
 import gerador_provas.conexao.Conexao;
 import gerador_provas.model.Alternativa;
 import gerador_provas.model.Professor;
@@ -42,13 +41,14 @@ public class QuestaoDAO {
 			AlternativaDAO alternativaDAO = new AlternativaDAO();
 			questao.setIdquestao(rs.getInt(1));
 			
-			for(int i=0; i < questao.getAlternativas().length; i++) {
+			int cont = 0;
+			for(int i=0; i < questao.getAlternativas().length; i++) {	
+				cont ++;
+				questao.getAlternativas()[i].setIdAlternativa(cont);
 				alternativaDAO.cadastrar(questao.getAlternativas()[i], questao);
 			}
 			
-			
 			stmt.close();
-			
 			
 
 			// Cadastrar alternativa aqui! -> chamar classe AlternativaDAO;
@@ -67,16 +67,13 @@ public class QuestaoDAO {
 			stmt.setString(1, questao.getEnunciado());
 			ResultSet rs = stmt.executeQuery();
 			
-			if(rs.next()) {
-				
+			if(rs.next()) {	
 				Questao questaoResul = new Questao();
 				questaoResul.setIdquestao(rs.getInt("idquestao"));	
 				
-	
 	            ProfessorDAO professorDAO = new ProfessorDAO();
 	            questaoResul.setProfessor(professorDAO.pesquisarCpf(rs.getLong("professor_cpf")));
-	                
-	             
+	                 
 	            AreaDAO areaDAO = new AreaDAO();
 	            questaoResul.setArea(areaDAO.pesquisarId(rs.getInt("idarea")));
 	            
@@ -100,7 +97,7 @@ public class QuestaoDAO {
 		}catch(Exception e) {
 			throw new RuntimeException(e);
 		}
-	} // Fim pesquisa
+	} 
 }
 	
 

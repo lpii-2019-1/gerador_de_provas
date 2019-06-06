@@ -9,6 +9,7 @@ public class AreaController {
 		AreaDAO areaDAO = new AreaDAO();
 		Area resultado = areaDAO.pesquisar(area);
 		
+		
 		if(resultado.getArea().equals(area.getArea()) ) {
 			return resultado.getIdarea();
 		}

@@ -14,8 +14,7 @@ public class OrigemController {
 		}
 		else {
 			origemDAO.cadastrar(origem);
-			Origem resul = origemDAO.pesquisar(origem);
-			return resul.getIdorigem();
+			return origem.getIdorigem();
 		}
 	}
 }

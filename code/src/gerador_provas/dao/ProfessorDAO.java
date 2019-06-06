@@ -7,7 +7,6 @@ import java.sql.SQLException;
 
 import gerador_provas.conexao.Conexao;
 import gerador_provas.model.Professor;
-import model.Cidade;
 
 
 
@@ -58,7 +57,7 @@ public class ProfessorDAO {
 			throw new RuntimeException(e);
 		}
 		
-	} // Fim Pesquisa
+	} 
 	
 	public Professor pesquisarCpf(long cpf) {
 		String sql = "select * from professor where cpf = ?";

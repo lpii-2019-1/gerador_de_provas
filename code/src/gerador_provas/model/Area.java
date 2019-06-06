@@ -23,4 +23,10 @@ public class Area {
 		this.area = area;
 	}
 	
+//	@Override
+//	public String toString() {
+//		String texto = this.getArea();
+//		return texto;
+//	}
+	
 }

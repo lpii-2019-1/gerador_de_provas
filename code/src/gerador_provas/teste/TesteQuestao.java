@@ -7,6 +7,7 @@ import gerador_provas.control.AreaController;
 import gerador_provas.control.DisciplinaController;
 import gerador_provas.control.OrigemController;
 import gerador_provas.control.ProfessorController;
+import gerador_provas.control.QuestaoController;
 import gerador_provas.dao.QuestaoDAO;
 import gerador_provas.model.Alternativa;
 import gerador_provas.model.Disciplina;
@@ -34,22 +35,17 @@ public class TesteQuestao {
 		
 		Origem origem = new Origem("ENEM", 2018);
 		OrigemController origemc = new OrigemController();
-		int idorigem = origemc.insere(origem);
-		origem.setIdorigem(idorigem);
+		origem.setIdorigem(origemc.insere(origem));
 		
 		Area area = new Area("Linguagens, Códigos e suas Tecnologias");
 		AreaController areac = new AreaController();
 		area.setIdarea(areac.insere(area));
 		
-		//area.setIdarea(idarea);
-		
 		
 		Disciplina disciplina =  new Disciplina("Português");
 		DisciplinaController disciplinac = new DisciplinaController();
-		int iddisciplina = disciplinac.insere(disciplina);
-		disciplina.setIddisciplina(iddisciplina);
-		
-		
+		disciplina.setIddisciplina(disciplinac.insere(disciplina));
+
 		
 		Alternativa[] alternativas = new Alternativa[5];
 		
@@ -85,31 +81,30 @@ public class TesteQuestao {
 		alternativas[4] = a5;
 		
 		
+		Questao questao = new Questao(professor, area, disciplina, origem, enunciado, alternativas);
 		
-		Questao questao = new Questao(professor, novaArea, novaDisciplina, novaOrigem, enunciado, alternativas);
-		
-		// Problema em passar e pegar o array de alternativas.
-		
-		System.out.println("--------------------");
-		System.out.println("Professor CPF: " + questao.getProfessor().getCpf());
-		System.out.println("Origem: " + questao.getOrigem().getIdorigem());
-		System.out.println("Area: " + questao.getArea().getIdarea());
-		System.out.println("Disiplina: " + questao.getDisciplina().getIddisciplina());
-		System.out.println("Enunciado: " + questao.getEnunciado());
-		System.out.println("Alternativas: \n");
-		//System.out.println(questao.getAlternativa()[1]);
-		System.out.println(questao.getAlternativas()[0].getAlternativa());
-		
-		/*for(int i=0; i<= questao.getAlternativa().length; i++) {
-			System.out.println(alternativas[i]);
-		}*/
-		
-		//Alternativa[] alt = q1.getAlternativa(); 
-		
-		QuestaoDAO questaoDAO = new QuestaoDAO();
-		questaoDAO.cadastrar(questao);
-		
-		
+//		// Problema em passar e pegar o array de alternativas.
+//		
+//		System.out.println("--------------------");
+//		System.out.println("Professor CPF: " + questao.getProfessor().getCpf());
+//		System.out.println("Origem: " + questao.getOrigem().getIdorigem());
+//		System.out.println("Area: " + questao.getArea().getIdarea());
+//		System.out.println("Disiplina: " + questao.getDisciplina().getIddisciplina());
+//		System.out.println("Enunciado: " + questao.getEnunciado());
+//		System.out.println("Alternativas: \n");
+//		//System.out.println(questao.getAlternativa()[1]);
+//		System.out.println(questao.getAlternativas()[0].getAlternativa());
+//		
+//		/*for(int i=0; i<= questao.getAlternativa().length; i++) {
+//			System.out.println(alternativas[i]);
+//		}*/
+//		
+//		//Alternativa[] alt = q1.getAlternativa(); 
+//		
+//		QuestaoDAO questaoDAO = new QuestaoDAO();
+//		questaoDAO.cadastrar(questao);
+		QuestaoController questaoc = new QuestaoController();
+		questaoc.insere(questao);
 		
 	}
 

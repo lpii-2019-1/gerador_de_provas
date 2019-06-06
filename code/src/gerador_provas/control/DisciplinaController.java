@@ -10,18 +10,12 @@ public class DisciplinaController {
 		DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
 		Disciplina resultado = disciplinaDAO.pesquisar(disciplina);
 		
-		
-		// Verifica se a disciplina já foi inserida
-		// 		-> Se inserida retorna o id;
-		//		-> Se não inserida retorna o id após inserir.
-		
 		if(resultado.getDisciplina().equals(disciplina.getDisciplina())) {
 			return resultado.getIddisciplina();
 		}
 		else {
 			disciplinaDAO.cadastrar(disciplina);
-			Disciplina resul = disciplinaDAO.pesquisar(disciplina);
-			return resul.getIddisciplina();
+			return disciplina.getIddisciplina();
 		}
 	}
 }

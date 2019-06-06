@@ -3,12 +3,13 @@ package gerador_provas.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 
 
 import gerador_provas.conexao.Conexao;
 import gerador_provas.model.Origem;
-import model.Cidade;
+
 
 
 
@@ -20,14 +21,22 @@ public class OrigemDAO {
 		this.conexao = new Conexao().getConexao();
 	}
 	
-	// Cadastrar
-	public void cadastrar(Origem origem) {
+	
+	public Origem cadastrar(Origem origem) {
 		String sql = "insert into origem (origem, ano) values (?, ?)";
 		try {
-			stmt = conexao.prepareStatement(sql);
+			stmt = conexao.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, origem.getOrigem());
 			stmt.setInt(2, origem.getAno());
 			stmt.execute();
+			
+			ResultSet rs = stmt.getGeneratedKeys();
+			rs.next();
+			origem.setIdorigem(rs.getInt(1));
+			stmt.close();
+			
+			return origem;
+			
 			stmt.close();
 			
 		}catch(Exception e) {

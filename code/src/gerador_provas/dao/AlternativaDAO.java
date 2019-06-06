@@ -20,6 +20,7 @@ public class AlternativaDAO {
 	
 	public void cadastrar(Alternativa alternativa, Questao questao) {
 		String sql = "Insert into alternativa (idquestao, idalternativa, alternativa, imagem, correta) values (?,?,?,?,?)";
+		
 		try {
 			stmt = conexao.prepareStatement(sql);
 			stmt.setInt(1,questao.getIdquestao());

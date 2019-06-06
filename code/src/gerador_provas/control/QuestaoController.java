@@ -13,35 +13,40 @@ import gerador_provas.control.AlternativaController;
 public class QuestaoController {
 
 	public int insere(Questao questao) {
+		
+		//ProfessorController professorc = new ProfessorController();
+		//Long idprofessor = professorc.insere(questao.getProfessor());
+		
+		//AreaController areac= new AreaController();
+		//int idarea = areac.insere(questao.getArea());
+		
+		//DisciplinaController disciplinac = new DisciplinaController();
+		//int iddisciplina = disciplinac.insere(questao.getDisciplina());
+		
+		//OrigemController origemc = new OrigemController();
+		//int idorigem = origemc.insere(questao.getOrigem());
+		
+		//AlternativaController alternativac = new AlternativaController();
+		//int idalternativa = alternativac.insere(questao.getAlternativas());
+		
 		QuestaoDAO questaoDAO = new QuestaoDAO();
-		
-		ProfessorController professorc = new ProfessorController();
-		Long idprofessor = professorc.insere(questao.getProfessor());
-		
-		AreaController areac= new AreaController();
-		int idarea = areac.insere(questao.getArea());
-		
-		DisciplinaController disciplinac = new DisciplinaController();
-		int iddisciplina = disciplinac.insere(questao.getDisciplina());
-		
-		OrigemController origemc = new OrigemController();
-		int idorigem = origemc.insere(questao.getOrigem());
-		
-		AlternativaController alternativac = new AlternativaController();
-		int idalternativa = alternativac.insere(questao.getAlternativas());
-		
 		Questao resultado = questaoDAO.pesquisar(questao);
+		System.out.println(resultado.getEnunciado());
+		System.out.println(questao.getEnunciado());
 		
+		// Dando erro na comparação ....
 		if(resultado.getEnunciado().equals(questao.getEnunciado())) {
+			System.out.println("Entrouuuu");
 			return resultado.getIdquestao();
 		}
 		else {
+			System.out.println("Não entouuu");
+		}
+		/*else {
 			questaoDAO.cadastrar(questao);
 			Questao resul = questaoDAO.pesquisar(questao);
 			return resul.getIdquestao();
-		}
-		
+		} */
 		return 0;
-		
 	}
 }

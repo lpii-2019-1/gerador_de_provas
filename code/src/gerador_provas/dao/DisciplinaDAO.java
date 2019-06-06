@@ -4,6 +4,7 @@ package gerador_provas.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 
 import gerador_provas.conexao.Conexao;
 import gerador_provas.model.Disciplina;
@@ -18,13 +19,20 @@ public class DisciplinaDAO {
 	}
 	
 	// Cadastrar
-		public void cadastrar(Disciplina disciplina) {
+		public Disciplina cadastrar(Disciplina disciplina) {
 			String sql = "insert into disciplina (disciplina) values (?)";
 			try {
-				stmt = conexao.prepareStatement(sql);
+				stmt = conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 				stmt.setString(1, disciplina.getDisciplina());
 				stmt.execute();
+				
+				ResultSet rs = stmt.getGeneratedKeys();
+				rs.next();
+				disciplina.setIddisciplina(rs.getInt(1));
+				
 				stmt.close();
+				
+				return disciplina;
 				
 			}catch(Exception e) {
 				throw new RuntimeException(e);
