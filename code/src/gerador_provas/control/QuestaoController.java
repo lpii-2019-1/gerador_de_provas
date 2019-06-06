@@ -34,10 +34,11 @@ public class QuestaoController {
 		System.out.println(resultado.getEnunciado());
 		System.out.println(questao.getEnunciado());
 		
-		// Dando erro na comparação ....
-		if(resultado.getEnunciado().equals(questao.getEnunciado())) {
-			System.out.println("Entrouuuu");
-			return resultado.getIdquestao();
+		if(resultado.getEnunciado() != null) {
+			if(resultado.getEnunciado().equals(questao.getEnunciado())) {
+				System.out.println("Entrouuuu");
+				return resultado.getIdquestao();
+			}
 		}
 		else {
 			System.out.println("Não entouuu");
