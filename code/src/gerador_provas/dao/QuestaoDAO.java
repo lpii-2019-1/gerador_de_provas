@@ -54,7 +54,7 @@ public class QuestaoDAO {
 	}
 	
 	public Questao pesquisar(Questao questao) {
-		String sql = "select * from questao where enunciado = '?' ";
+		String sql = "select * from questao where enunciado = ?";
 		
 		try {
 			stmt = conexao.prepareStatement(sql);
@@ -94,6 +94,9 @@ public class QuestaoDAO {
 	}
 	
 	public Questao atualizar(Questao questao) {
+		System.out.println("Area: " + questao.getArea().getIdarea());
+		System.out.println("Disciplina: " + questao.getDisciplina().getDisciplina());
+		System.out.println("Origem: "+ questao.getOrigem().getIdorigem());
 		String sql = "update questao set idarea = ? iddisciplina = ? idorigem = ? enunciado = ? imagem = ?";
 		try {
 			stmt = conexao.prepareStatement(sql);
