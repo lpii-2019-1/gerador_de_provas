@@ -97,7 +97,7 @@ public class QuestaoDAO {
 		System.out.println("Area: " + questao.getArea().getIdarea());
 		System.out.println("Disciplina: " + questao.getDisciplina().getDisciplina());
 		System.out.println("Origem: "+ questao.getOrigem().getIdorigem());
-		String sql = "update questao set idarea = ? iddisciplina = ? idorigem = ? enunciado = ? imagem = ?";
+		String sql = "update questao set idarea = ?, iddisciplina = ?, idorigem = ?, enunciado = ?, imagem = ? where idquestao = ?";
 		try {
 			stmt = conexao.prepareStatement(sql);
 			stmt.setInt(1, questao.getArea().getIdarea());
@@ -105,6 +105,7 @@ public class QuestaoDAO {
 			stmt.setInt(3, questao.getOrigem().getIdorigem());
 			stmt.setString(4,questao.getEnunciado());
 			stmt.setBlob(5, questao.getImagem());
+			stmt.setInt(6, questao.getIdquestao());
 			stmt.execute();
 			stmt.close();
 		}catch (Exception e) {
