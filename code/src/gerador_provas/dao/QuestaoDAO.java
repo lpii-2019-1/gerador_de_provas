@@ -1,16 +1,11 @@
 package gerador_provas.dao;
 
-import java.io.File;
-
-import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
 import gerador_provas.conexao.Conexao;
-import gerador_provas.model.Alternativa;
-import gerador_provas.model.Professor;
 import gerador_provas.model.Questao;
 
 
@@ -41,6 +36,8 @@ public class QuestaoDAO {
 			AlternativaDAO alternativaDAO = new AlternativaDAO();
 			questao.setIdquestao(rs.getInt(1));
 			
+			// Passa cada uma das alterntivas para serem gravadas no BD.
+			// O cont serve como id auto increment das alternativas;
 			int cont = 0;
 			for(int i=0; i < questao.getAlternativas().length; i++) {	
 				cont ++;
@@ -50,9 +47,6 @@ public class QuestaoDAO {
 			
 			stmt.close();
 			
-
-			// Cadastrar alternativa aqui! -> chamar classe AlternativaDAO;
-			// Fazer for para passar por array alternativas e salvar cada uma.
 			
 		}catch(Exception e) {
 			throw new RuntimeException(e);
@@ -60,7 +54,7 @@ public class QuestaoDAO {
 	}
 	
 	public Questao pesquisar(Questao questao) {
-		String sql = "select * from questao where enunciado = ?";
+		String sql = "select * from questao where enunciado = '?' ";
 		
 		try {
 			stmt = conexao.prepareStatement(sql);
@@ -97,7 +91,27 @@ public class QuestaoDAO {
 		}catch(Exception e) {
 			throw new RuntimeException(e);
 		}
-	} 
+	}
+	
+	public Questao atualizar(Questao questao) {
+		String sql = "update questao set idarea = ? iddisciplina = ? idorigem = ? enunciado = ? imagem = ?";
+		try {
+			stmt = conexao.prepareStatement(sql);
+			stmt.setInt(1, questao.getArea().getIdarea());
+			stmt.setInt(2, questao.getDisciplina().getIddisciplina());
+			stmt.setInt(3, questao.getOrigem().getIdorigem());
+			stmt.setString(4,questao.getEnunciado());
+			stmt.setBlob(5, questao.getImagem());
+			stmt.execute();
+			stmt.close();
+		}catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+		
+		return questao;
+		
+	}
+	
 }
 	
 

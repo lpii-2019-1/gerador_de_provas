@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 
 import gerador_provas.conexao.Conexao;
 import gerador_provas.model.Alternativa;
-import gerador_provas.model.Professor;
 import gerador_provas.model.Questao;
 
 

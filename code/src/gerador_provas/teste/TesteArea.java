@@ -2,6 +2,7 @@ package gerador_provas.teste;
 
 import gerador_provas.dao.AreaDAO;
 import gerador_provas.model.Area;
+import model.Cidade;
 
 public class TesteArea {
 
@@ -9,18 +10,16 @@ public class TesteArea {
 		
 		AreaDAO areaDAO = new AreaDAO(); 
 		
-		Area a1 = new Area();
+		//Area a1 = new Area();
 		//a1.setArea("Matemática e suas Tecnologias");
 		
 		//areaDAO.cadastrar(a1);
+				
 		
 		
-		//System.out.println(a1.getArea());
+
 		
-		
-		
-		
-		Area areaPesquisada = areaDAO.pesquisar("Matemática e suas Tecnologias");
+		/*Area areaPesquisada = areaDAO.pesquisar("Matemática e suas Tecnologias");
 	
         
         if (areaPesquisada.getIdarea() != 0) {
@@ -33,7 +32,7 @@ public class TesteArea {
         
         //a1.setArea(areaPesquisada.getArea());
         //a1.setIdarea(areaPesquisada.getIdarea());
-        //areaDAO.apagar(a1);
+        //areaDAO.apagar(a1); */
 		
 	}
 

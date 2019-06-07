@@ -12,12 +12,13 @@ public class Area {
 
 	public void setIdarea(int idarea) {this.idarea = idarea;}
 	
-	public Area() {
-		
-	}
-	public Area(String area) {
-		this.area = area;
-	}
+	
+	public Area() {}
+	
+	public Area(String area) { this.area = area; }
+	
+	public Area(int idarea) {this.idarea = idarea;}
+	
 	public Area(int idarea, String area) {
 		this.idarea = idarea;
 		this.area = area;

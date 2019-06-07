@@ -56,25 +56,23 @@ public class AreaDAO {
 			throw new RuntimeException(e);
 		}
 	}
-
-	public Area pesquisarId(int Idarea) {
-		String sql = "select * from area where idarea = ?";
-		Area area = new Area();
+	
+	public Area atualizar(Area area) {
+		String sql = "update area set area = ? where idarea = ?";
 		try {
-
 			stmt = conexao.prepareStatement(sql);
-			stmt.setInt(1, Idarea);
-			ResultSet rs = stmt.executeQuery();
-			
-			if (rs.next()) {
-				area.setIdarea(rs.getInt("idArea"));
-				area.setArea(rs.getString("area"));
-			}
-		} catch (Exception e) {
+			stmt.setString(1, area.getArea());
+			stmt.setInt(2, area.getIdarea());
+			stmt.execute();
+			stmt.close();
+		}catch (Exception e) {
 			throw new RuntimeException(e);
 		}
+
 		return area;
+		
 	}
+
 
 	public ArrayList<Area> listarTudo() {
 		String sql = "select * from area";
@@ -98,6 +96,30 @@ public class AreaDAO {
 		}
 
 	}
+	
+	
+	
+
+	public Area pesquisarId(int Idarea) {
+		String sql = "select * from area where idarea = ?";
+		Area area = new Area();
+		try {
+
+			stmt = conexao.prepareStatement(sql);
+			stmt.setInt(1, Idarea);
+			ResultSet rs = stmt.executeQuery();
+			
+			if (rs.next()) {
+				area.setIdarea(rs.getInt("idArea"));
+				area.setArea(rs.getString("area"));
+			}
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+		return area;
+	}
+	
+	
 
 	public void apagar(Area area) {
 		String sql = "delete from area where idarea= ?";

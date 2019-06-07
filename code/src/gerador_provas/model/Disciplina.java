@@ -5,17 +5,16 @@ public class Disciplina {
 	private String disciplina;
 	
 	
-	public Disciplina(String disciplina) {
-		this.disciplina = disciplina;
-	}
+	public Disciplina(String disciplina) { this.disciplina = disciplina; }
+	
+	public Disciplina(int iddisciplina) {this.iddisciplina = iddisciplina;}
+	
 	public Disciplina(int iddisciplina, String disciplina) {
 		this.iddisciplina = iddisciplina;
 		this.disciplina = disciplina;
 	}
 	
-	public Disciplina() {
-		
-	}
+	public Disciplina() { }
 	
 	public int getIddisciplina() {
 		return iddisciplina;

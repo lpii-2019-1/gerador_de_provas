@@ -19,6 +19,9 @@ public class Origem {
 
 	public void setIdorigem(int idorigem) { this.idorigem = idorigem; }
 	
+	
+	public Origem(int idorigem) {this.idorigem = idorigem;}
+	
 	public Origem(String origem, int ano) {
 		this.origem = origem;
 		this.ano = ano;
@@ -30,9 +33,7 @@ public class Origem {
 		this.ano = ano;
 	}
 	
-	public Origem() {
-		
-	}
+	public Origem() {	}
 
 
 	
