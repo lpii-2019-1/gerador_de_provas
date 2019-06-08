@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import gerador_provas.conexao.Conexao;
+import gerador_provas.model.Disciplina;
 import gerador_provas.model.Professor;
 
 
@@ -74,6 +75,26 @@ public class ProfessorDAO {
 			throw new RuntimeException(e);
 		}
 		return null;
+	}
+	public Professor atualizar(Professor professor) {
+		String sql = "update professor set cpf = ?, nome = ?, instituicao = ?, email = ?, senha = ? where cpf = ?; ";
+		try {
+			stmt = conexao.prepareStatement(sql);
+			stmt.setLong(1, professor.getCpf());
+			stmt.setString(2, professor.getNome());
+			stmt.setString(3, professor.getInstituicao());
+			stmt.setString(4, professor.getEmail());
+			stmt.setString(5, professor.getSenha());
+			stmt.setLong(6, professor.getCpf());
+
+			stmt.execute();
+			stmt.close();
+		}catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+		
+		return professor;
+		
 	}
 	
 	

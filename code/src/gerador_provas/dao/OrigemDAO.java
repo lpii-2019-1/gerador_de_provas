@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import gerador_provas.conexao.Conexao;
 import gerador_provas.model.Origem;
+import gerador_provas.model.Professor;
 
 
 
@@ -123,6 +124,22 @@ public class OrigemDAO {
 			 throw new RuntimeException(e);
 		 }
 	 }
+	 public Origem atualizar(Origem origem) {
+			String sql = "update origem set origem = ?, ano = ? where idorigem = ?;";
+			try {
+				stmt = conexao.prepareStatement(sql);
+				stmt.setString(1, origem.getOrigem());
+				stmt.setInt(2, origem.getAno());
+				stmt.setInt(3, origem.getIdorigem());
+				stmt.execute();
+				stmt.close();
+			}catch (Exception e) {
+				throw new RuntimeException(e);
+			}
+			
+			return origem;
+			
+		}
 	 
 	
 }

@@ -81,5 +81,20 @@ public class DisciplinaDAO {
 				throw new RuntimeException(e);
 			}
 		}
+		public Disciplina atualizar(Disciplina disciplina) {
+			String sql = "update disciplina set disciplina = ? where iddisciplina = ?; ";
+			try {
+				stmt = conexao.prepareStatement(sql);
+				stmt.setString(1, disciplina.getDisciplina());
+				
+				stmt.execute();
+				stmt.close();
+			}catch (Exception e) {
+				throw new RuntimeException(e);
+			}
+			
+			return disciplina;
+			
+		}
 	
 }

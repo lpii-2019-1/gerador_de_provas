@@ -3,6 +3,7 @@ package gerador_provas.control;
 
 import gerador_provas.dao.DisciplinaDAO;
 import gerador_provas.model.Disciplina;
+import gerador_provas.model.Questao;
 
 public class DisciplinaController {
 	
@@ -17,5 +18,6 @@ public class DisciplinaController {
 			disciplinaDAO.cadastrar(disciplina);
 			return disciplina.getIddisciplina();
 		}
-	}
+	}	
+	
 }

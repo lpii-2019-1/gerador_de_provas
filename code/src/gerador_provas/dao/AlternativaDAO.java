@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 
 import gerador_provas.conexao.Conexao;
 import gerador_provas.model.Alternativa;
+import gerador_provas.model.Disciplina;
 import gerador_provas.model.Questao;
 
 
@@ -63,6 +64,25 @@ public class AlternativaDAO {
 		}catch(Exception e) {
 			throw new RuntimeException(e);
 		}
+	}
+	public Alternativa atualizar(Alternativa alternativa) {
+		String sql = "update alternativa set alternativa = ?, imagem = ?, correta = ? where idalternativa = ?;";
+		try {
+			stmt = conexao.prepareStatement(sql);
+			stmt.setString(1, alternativa.getAlternativa());
+			stmt.setBlob(2, alternativa.getImagem());
+			stmt.setBoolean(3, alternativa.getCorreta());
+			stmt.setInt(3, alternativa.getIdAlternativa());
+
+			
+			stmt.execute();
+			stmt.close();
+		}catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+		
+		return alternativa;
+		
 	}
 	
 	
