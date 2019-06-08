@@ -128,13 +128,15 @@ public class TesteQuestao {
 			Disciplina novaDisciplina = new Disciplina();
 			questaoAtualizada.setDisciplina(novaDisciplina);
 			
-			Origem novaOrigem = new Origem(3);
+			Origem novaOrigem = new Origem(1);
 			questaoAtualizada.setOrigem(novaOrigem);
+			
 			
 			
 		
 			questaoc.atualiza(questaoAtualizada);
 			
+			//questaoDAO.pesquisar(questaoAtualizar);
 			
 			//----------------------------------------------------------------------
 			

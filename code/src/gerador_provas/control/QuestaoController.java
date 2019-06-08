@@ -31,8 +31,9 @@ public class QuestaoController {
 	
 	public void atualiza(Questao questao) {
 		Questao resultado = questaoDAO.pesquisar(questao);
-		Questao questaoAtualizar = new Questao();
 		
+		Questao questaoAtualizar = new Questao();
+		questaoAtualizar.setIdquestao(questao.getIdquestao());
 		if(resultado.getEnunciado() != null) {
 			
 			if(questao.getArea().getIdarea() == 0) {questaoAtualizar.setArea(resultado.getArea()); }

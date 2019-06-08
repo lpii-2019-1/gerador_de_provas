@@ -94,9 +94,8 @@ public class QuestaoDAO {
 	}
 	
 	public Questao atualizar(Questao questao) {
-		System.out.println("Area: " + questao.getArea().getIdarea());
-		System.out.println("Disciplina: " + questao.getDisciplina().getDisciplina());
-		System.out.println("Origem: "+ questao.getOrigem().getIdorigem());
+	
+		
 		String sql = "update questao set idarea = ?, iddisciplina = ?, idorigem = ?, enunciado = ?, imagem = ? where idquestao = ?";
 		try {
 			stmt = conexao.prepareStatement(sql);
