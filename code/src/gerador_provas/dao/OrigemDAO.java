@@ -38,8 +38,6 @@ public class OrigemDAO {
 			
 			return origem;
 			
-			stmt.close();
-			
 		}catch(Exception e) {
 			throw new RuntimeException(e);
 		}
