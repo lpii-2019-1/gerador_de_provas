@@ -104,12 +104,7 @@ public class TesteQuestao {
 		
 		
 		else if(op == 2) {
-			
 
-			
-			// ------------------------------------------------------------------
-		
-			
 			// Arrumando atualização do questao.
 			Questao questaoAtualizar = new Questao();
 			
@@ -132,19 +127,10 @@ public class TesteQuestao {
 			questaoAtualizada.setOrigem(novaOrigem);
 			
 			
-			
-		
 			questaoc.atualiza(questaoAtualizada);
 			
-			//questaoDAO.pesquisar(questaoAtualizar);
-			
-			//----------------------------------------------------------------------
-			
+			//questaoDAO.pesquisar(questaoAtualizar);			
 		}
-		
-				
-		
-	
 	}
 
 }
