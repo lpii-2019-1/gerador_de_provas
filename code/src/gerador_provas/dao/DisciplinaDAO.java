@@ -8,6 +8,7 @@ import java.sql.Statement;
 
 import gerador_provas.conexao.Conexao;
 import gerador_provas.model.Disciplina;
+import java.sql.SQLException;
 
 
 public class DisciplinaDAO {
@@ -82,16 +83,40 @@ public class DisciplinaDAO {
 			}
 		}
 		public Disciplina atualizar(Disciplina disciplina) {
-			String sql = "update disciplina set disciplina = ? where iddisciplina = ?; ";
+			String sql = "update disciplina set disciplina = ? where iddisciplina = ?";
 			try {
+                            System.out.println(disciplina.getDisciplina());
 				stmt = conexao.prepareStatement(sql);
-				stmt.setString(1, disciplina.getDisciplina());
+                                stmt.setString(1, disciplina.getDisciplina());
+                                stmt.setInt(2, disciplina.getIddisciplina());
+				
 				
 				stmt.execute();
 				stmt.close();
-			}catch (Exception e) {
+			}catch (SQLException e) {
 				throw new RuntimeException(e);
 			}
+                        
+                        
+			
+			return disciplina;
+			
+		}
+                public Disciplina deletar(Disciplina disciplina) {
+			String sql = "delete from disciplina where iddisciplina = ?";
+			try {
+                            System.out.println(disciplina.getDisciplina());
+				stmt = conexao.prepareStatement(sql);
+                                stmt.setInt(1, disciplina.getIddisciplina());
+				
+				
+				stmt.execute();
+				stmt.close();
+			}catch (SQLException e) {
+				throw new RuntimeException(e);
+			}
+                        
+                        
 			
 			return disciplina;
 			

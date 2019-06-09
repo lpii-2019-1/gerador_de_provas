@@ -18,6 +18,20 @@ public class DisciplinaController {
 			disciplinaDAO.cadastrar(disciplina);
 			return disciplina.getIddisciplina();
 		}
+                
 	}	
+        
+        public void atualizar(int ID, Disciplina disciplina){
+            DisciplinaDAO disciplinaDAO = new DisciplinaDAO();    
+            disciplina.setIddisciplina(ID);
+            disciplinaDAO.atualizar(disciplina);
+        }
+        public void deletar(int ID){
+            DisciplinaDAO disciplinaDAO = new DisciplinaDAO();    
+            Disciplina oDisciplina = new Disciplina();
+            oDisciplina.setIddisciplina(ID);
+            disciplinaDAO.deletar(oDisciplina);
+        }
+   
 	
 }
