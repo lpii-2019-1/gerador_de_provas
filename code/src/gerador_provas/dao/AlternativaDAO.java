@@ -3,11 +3,14 @@ package gerador_provas.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
+import dao.CidadeDAO;
 import gerador_provas.conexao.Conexao;
 import gerador_provas.model.Alternativa;
 import gerador_provas.model.Disciplina;
 import gerador_provas.model.Questao;
+import model.Aluno;
 
 
 public class AlternativaDAO {
@@ -65,6 +68,35 @@ public class AlternativaDAO {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	
+	public  ArrayList<Alternativa> listar(Questao questoes){
+		System.out.println(questoes.getIdquestao());
+		
+		String sql = "select * from alternativa where idquestao= ?";
+		try {
+			stmt = conexao.prepareStatement(sql);
+			stmt.setInt(1, questoes.getIdquestao());
+			ResultSet rs = stmt.executeQuery();
+			
+			 ArrayList<Alternativa> lista = new ArrayList<Alternativa>();
+	            while (rs.next()) {
+	            	Alternativa alternativaResul = new Alternativa();
+					alternativaResul.setIdQuestao(rs.getInt("idquestao"));
+					alternativaResul.setIdAlternativa(rs.getInt("idalternativa"));
+					alternativaResul.setAlternativa(rs.getString("alternativa"));
+					alternativaResul.setImagem(rs.getBlob("imagem"));	
+	               
+	                lista.add(alternativaResul);    
+	            }
+	            stmt.close();
+	            return lista;
+		}catch(Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	
 	public Alternativa atualizar(Alternativa alternativa) {
 		String sql = "update alternativa set alternativa = ?, imagem = ?, correta = ? where idalternativa = ?;";
 		try {

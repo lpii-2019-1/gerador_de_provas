@@ -4,7 +4,8 @@ public class Prova {
 	private int idprova;
 	private Professor professor;
 	private String cabecalho;
-	private Questao questoes;
+	private Questao[] questoes;
+	private int tipos;
 	
 	public int getIdprova() { return idprova; }
 	
@@ -18,9 +19,15 @@ public class Prova {
 	
 	public void setCabecalho(String cabecalho) { this.cabecalho = cabecalho; }
 	
-	public Questao getQuestoes() {	return questoes; }
+	public Questao[] getQuestoes() {	return questoes; }
 	
-	public void setQuestoes(Questao questoes) { this.questoes = questoes; }
-	
-	
+	public void setQuestoes(Questao[] questoes) { this.questoes = questoes; }
+
+	public int getTipos() {
+		return tipos;
+	}
+
+	public void setTipos(int tipos) {
+		this.tipos = tipos;
+	}	
 }
