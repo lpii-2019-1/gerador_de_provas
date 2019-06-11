@@ -236,25 +236,13 @@ public class TesteQuestao {
 		     for (Questao q : questoes) {
 		    	  System.out.println("\nID: " + q.getIdquestao());
 		          System.out.println("Enunciado: \n"+ q.getEnunciado());
-		          System.out.println("Origem: " +q.getProfessor().getNome());
-		     } 
-		     
-
-		     for(Questao q: questoes) {
-		    	 System.out.println("Insira o id da questão a ser inserida: ");
-		    	 int id = input.nextInt();
-		    	 
-		    	 System.out.println("Deseja inserir outra questao: ");
-		    	 String esc = input.nextLine();
-		    	 if(esc == "n") {break;}
-		    	 
+		          System.out.println("Origem: " + q.getProfessor().getNome());     
 		     }
 		     
 		     
+		     // Tenho que fazer com que o usuário seleciona algumas questões para inserir na prova
 		     
-		
-		
-			
+		     
 		}
 	}
 
