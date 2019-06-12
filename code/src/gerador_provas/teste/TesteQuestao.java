@@ -235,24 +235,20 @@ public class TesteQuestao {
 			prova.setProfessor(questao.getProfessor());
 			
 			
-		     /*for (Questao q : questoes) {
+		     for (Questao q : questoes) {
 		    	  System.out.println("\nID: " + q.getIdquestao());
 		          System.out.println("Enunciado: \n"+ q.getEnunciado());
 		          System.out.println("Origem: " + q.getProfessor().getNome());  
-		     }*/
+		     }
 		     
 		     
-		     QuestaoDAO questaoDAO = new QuestaoDAO();
+		     //QuestaoDAO questaoDAO = new QuestaoDAO();
 		     //questaoDAO.pesquisaId(1);
 		     
 		     prova.adicionaQuestao(1);
 		     
-		     System.out.println(prova.getQuestoes());
-	
-		  
-		     // pesquisar questao pelo id;
-		     // Fazer metodo em prova para inserir questao;
-		     
+		     System.out.println(prova.getQuestoes().get(0).getEnunciado());
+	   
 		}
 	}
 
