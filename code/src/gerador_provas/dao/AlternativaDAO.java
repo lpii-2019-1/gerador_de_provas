@@ -5,12 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import dao.CidadeDAO;
 import gerador_provas.conexao.Conexao;
 import gerador_provas.model.Alternativa;
 import gerador_provas.model.Disciplina;
 import gerador_provas.model.Questao;
-import model.Aluno;
+
 
 
 public class AlternativaDAO {
@@ -64,6 +63,42 @@ public class AlternativaDAO {
 				stmt.close();
 	            return alternativaResul;
 			}	
+		}catch(Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	
+	public Alternativa[] pesquisarId(int idquestao){
+		String sql = "select * from alternativa where idquestao = ?";
+		try {
+			stmt = conexao.prepareStatement(sql);
+			stmt.setInt(1, idquestao);
+			ResultSet rs = stmt.executeQuery();
+			Alternativa[] alternativas = null;
+			//ArrayList<Alternativa> alternativas  = new ArrayList<Alternativa>();
+			
+			for(int i=0; i<= 5; i++) {
+				Alternativa alternativa =  new Alternativa();
+				alternativa.setAlternativa(rs.getString("alternativa"));
+				alternativa.setCorreta(rs.getBoolean("correta"));
+				alternativa.setIdAlternativa(rs.getInt("idalternativa"));
+				alternativa.setIdQuestao(rs.getInt("idquestao"));
+				alternativa.setImagem(rs.getBlob("imagem"));
+				alternativas[i] = alternativa;
+			}
+			/*while(rs.next()) {
+				Alternativa alternativa =  new Alternativa();
+				alternativa.setAlternativa(rs.getString("alternativa"));
+				alternativa.setCorreta(rs.getBoolean("correta"));
+				alternativa.setIdAlternativa(rs.getInt("idalternativa"));
+				alternativa.setIdQuestao(rs.getInt("idquestao"));
+				alternativa.setImagem(rs.getBlob("imagem"));
+				alternativas[]
+			}*/
+			stmt.close();
+			return alternativas;
+			
 		}catch(Exception e) {
 			throw new RuntimeException(e);
 		}

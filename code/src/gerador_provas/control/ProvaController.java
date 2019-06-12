@@ -50,9 +50,6 @@ public class ProvaController {
 			}
 			
 			
-			
-			
-			
 			index = aleatorio.nextInt(letras.length());
 			armazenaChaves += letras.substring(index, index +1);
 			

@@ -233,14 +233,19 @@ public class TesteQuestao {
 			prova.setProfessor(questao.getProfessor());
 			
 			
-		     for (Questao q : questoes) {
+		     /*for (Questao q : questoes) {
 		    	  System.out.println("\nID: " + q.getIdquestao());
 		          System.out.println("Enunciado: \n"+ q.getEnunciado());
-		          System.out.println("Origem: " + q.getProfessor().getNome());     
-		     }
+		          System.out.println("Origem: " + q.getProfessor().getNome());  
+		     }*/
 		     
 		     
-		     // Tenho que fazer com que o usuário seleciona algumas questões para inserir na prova
+		     QuestaoDAO questaoDAO = new QuestaoDAO();
+		     questaoDAO.pesquisaId(1);
+		     
+		     // pesquisar questao pelo id;
+		     // Fazer metodo em prova para inserir questao;
+		     
 		     
 		     
 		}

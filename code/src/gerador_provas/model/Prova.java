@@ -1,5 +1,7 @@
 package gerador_provas.model;
 
+import gerador_provas.dao.QuestaoDAO;
+
 public class Prova {
 	private int idprova;
 	private Professor professor;
@@ -23,11 +25,14 @@ public class Prova {
 	
 	public void setQuestoes(Questao[] questoes) { this.questoes = questoes; }
 
-	public int getTipos() {
-		return tipos;
-	}
+	public int getTipos() { return tipos; }
 
-	public void setTipos(int tipos) {
-		this.tipos = tipos;
-	}	
+	public void setTipos(int tipos) {this.tipos = tipos;}
+	
+	public void adicionaQuestao(int idquestao) {
+		QuestaoDAO questaoDAO = new QuestaoDAO();
+		questaoDAO. // Tò aqui ambeemeem
+		
+		
+	}
 }

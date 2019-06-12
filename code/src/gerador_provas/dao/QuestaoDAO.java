@@ -98,6 +98,48 @@ public class QuestaoDAO {
 	}
 	
 	
+	public Questao pesquisaId(int idquestao) {
+		String sql = "select * from questao where idquestao = ?";
+		try {
+			stmt = conexao.prepareStatement(sql);
+			stmt.setInt(1, idquestao);
+			ResultSet rs = stmt.executeQuery();
+			Questao questao = new Questao();
+			
+		
+			if(rs.next()) {
+				questao.setIdquestao(rs.getInt("idquestao"));
+				
+				AreaDAO areaDAO = new AreaDAO();
+				questao.setArea(areaDAO.pesquisarId(rs.getInt("idarea")));
+				
+				DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
+				questao.setDisciplina(disciplinaDAO.pesquisarId(rs.getInt("iddisciplina")));
+				
+				OrigemDAO origemDAO = new OrigemDAO();
+				questao.setOrigem(origemDAO.pesquisarId(rs.getInt("idorigem")));
+				
+				ProfessorDAO professorDAO = new ProfessorDAO();
+				questao.setProfessor(professorDAO.pesquisarCpf(rs.getLong("professor_cpf")));
+				
+				AlternativaDAO alternativaDAO = new AlternativaDAO();
+				questao.setAlternativa(alternativaDAO.pesquisarId(rs.getInt("idquestao")));
+				
+				questao.SetImagem(rs.getBlob("imagem"));
+				questao.setEnunciado(rs.getString("enunciado"));
+			}
+			System.out.println(questao.getEnunciado());
+			System.out.println(questao.getIdquestao());
+			System.out.println(questao.getAlternativas());
+			
+			stmt.close();
+			return questao;
+		}catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	
 	public ArrayList<Questao> lista(int idarea) {
 		String sql = "select * from questao where idarea = ?";
 		
