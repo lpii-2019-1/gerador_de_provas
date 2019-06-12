@@ -1,12 +1,14 @@
 package gerador_provas.model;
 
+import java.util.ArrayList;
+
 import gerador_provas.dao.QuestaoDAO;
 
 public class Prova {
 	private int idprova;
 	private Professor professor;
 	private String cabecalho;
-	private Questao[] questoes;
+	private ArrayList<Questao> questoes;
 	private int tipos;
 	
 	public int getIdprova() { return idprova; }
@@ -21,9 +23,9 @@ public class Prova {
 	
 	public void setCabecalho(String cabecalho) { this.cabecalho = cabecalho; }
 	
-	public Questao[] getQuestoes() {	return questoes; }
+	public ArrayList<Questao> getQuestoes() {	return questoes; }
 	
-	public void setQuestoes(Questao[] questoes) { this.questoes = questoes; }
+	public void setQuestoes(ArrayList<Questao> questoes) { this.questoes = questoes; }
 
 	public int getTipos() { return tipos; }
 
@@ -31,8 +33,9 @@ public class Prova {
 	
 	public void adicionaQuestao(int idquestao) {
 		QuestaoDAO questaoDAO = new QuestaoDAO();
-		questaoDAO. // Tò aqui ambeemeem
-		
-		
+		//ArrayList<Questao> questoes = new ArrayList<Questao>();
+		//questoes.add(questaoDAO.pesquisaId(idquestao));
+		System.out.println(this.questoes);
+		this.questoes.add(questaoDAO.pesquisaId(idquestao));	
 	}
 }

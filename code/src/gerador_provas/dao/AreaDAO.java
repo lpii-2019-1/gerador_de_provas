@@ -113,6 +113,7 @@ public class AreaDAO {
 				area.setIdarea(rs.getInt("idArea"));
 				area.setArea(rs.getString("area"));
 			}
+			
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}

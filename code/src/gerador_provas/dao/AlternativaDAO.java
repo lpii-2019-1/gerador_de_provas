@@ -75,27 +75,19 @@ public class AlternativaDAO {
 			stmt = conexao.prepareStatement(sql);
 			stmt.setInt(1, idquestao);
 			ResultSet rs = stmt.executeQuery();
-			Alternativa[] alternativas = null;
-			//ArrayList<Alternativa> alternativas  = new ArrayList<Alternativa>();
+			Alternativa[] alternativas = new Alternativa[5];
 			
-			for(int i=0; i<= 5; i++) {
+			int cont = 0;
+			while(rs.next()) {
 				Alternativa alternativa =  new Alternativa();
 				alternativa.setAlternativa(rs.getString("alternativa"));
 				alternativa.setCorreta(rs.getBoolean("correta"));
 				alternativa.setIdAlternativa(rs.getInt("idalternativa"));
 				alternativa.setIdQuestao(rs.getInt("idquestao"));
 				alternativa.setImagem(rs.getBlob("imagem"));
-				alternativas[i] = alternativa;
+				alternativas[cont] = alternativa;
+				cont++;
 			}
-			/*while(rs.next()) {
-				Alternativa alternativa =  new Alternativa();
-				alternativa.setAlternativa(rs.getString("alternativa"));
-				alternativa.setCorreta(rs.getBoolean("correta"));
-				alternativa.setIdAlternativa(rs.getInt("idalternativa"));
-				alternativa.setIdQuestao(rs.getInt("idquestao"));
-				alternativa.setImagem(rs.getBlob("imagem"));
-				alternativas[]
-			}*/
 			stmt.close();
 			return alternativas;
 			

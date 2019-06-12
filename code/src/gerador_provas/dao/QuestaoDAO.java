@@ -107,7 +107,7 @@ public class QuestaoDAO {
 			Questao questao = new Questao();
 			
 		
-			if(rs.next()) {
+			if (rs.next()) {
 				questao.setIdquestao(rs.getInt("idquestao"));
 				
 				AreaDAO areaDAO = new AreaDAO();
@@ -128,9 +128,6 @@ public class QuestaoDAO {
 				questao.SetImagem(rs.getBlob("imagem"));
 				questao.setEnunciado(rs.getString("enunciado"));
 			}
-			System.out.println(questao.getEnunciado());
-			System.out.println(questao.getIdquestao());
-			System.out.println(questao.getAlternativas());
 			
 			stmt.close();
 			return questao;

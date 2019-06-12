@@ -14,6 +14,8 @@ import gerador_provas.control.OrigemController;
 import gerador_provas.control.ProfessorController;
 import gerador_provas.control.ProvaController;
 import gerador_provas.control.QuestaoController;
+import gerador_provas.dao.AlternativaDAO;
+import gerador_provas.dao.AreaDAO;
 import gerador_provas.dao.QuestaoDAO;
 import gerador_provas.model.Alternativa;
 import gerador_provas.model.Disciplina;
@@ -227,8 +229,8 @@ public class TesteQuestao {
 			
 			QuestaoDAO aquestaoDAO = new QuestaoDAO();
 			
-			ArrayList<Questao> questoes = aquestaoDAO.lista(2);
-			ArrayList<Questao> questaoInserida = new ArrayList<Questao>();
+			ArrayList<Questao> questoes = aquestaoDAO.lista(1);
+			//ArrayList<Questao> questaoInserida = new ArrayList<Questao>();
 			
 			prova.setProfessor(questao.getProfessor());
 			
@@ -241,12 +243,15 @@ public class TesteQuestao {
 		     
 		     
 		     QuestaoDAO questaoDAO = new QuestaoDAO();
-		     questaoDAO.pesquisaId(1);
+		     //questaoDAO.pesquisaId(1);
 		     
+		     prova.adicionaQuestao(1);
+		     
+		     System.out.println(prova.getQuestoes());
+	
+		  
 		     // pesquisar questao pelo id;
 		     // Fazer metodo em prova para inserir questao;
-		     
-		     
 		     
 		}
 	}
