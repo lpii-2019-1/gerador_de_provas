@@ -9,9 +9,13 @@ public class OrigemController {
 		OrigemDAO origemDAO = new OrigemDAO();
 		Origem resultado = origemDAO.pesquisar(origem);
 		
-		if(resultado.getOrigem().equals(origem.getOrigem()) && resultado.getAno() == origem.getAno() ) {
+		if(resultado.getOrigem() != null) {
+			if(resultado.getOrigem().equals(origem.getOrigem()) && resultado.getAno() == origem.getAno() ) {
+				return resultado.getIdorigem();
+			}
 			return resultado.getIdorigem();
 		}
+		
 		else {
 			origemDAO.cadastrar(origem);
 			return origem.getIdorigem();

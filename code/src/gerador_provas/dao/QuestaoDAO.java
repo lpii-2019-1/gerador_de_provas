@@ -4,9 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
+import dao.CidadeDAO;
 import gerador_provas.conexao.Conexao;
+import gerador_provas.model.Professor;
 import gerador_provas.model.Questao;
+import model.Aluno;
 
 
 public class QuestaoDAO {
@@ -31,7 +35,7 @@ public class QuestaoDAO {
 			
 			ResultSet rs = stmt.getGeneratedKeys();
 			rs.next();
-			System.out.println(rs.getInt(1));
+			//System.out.println(rs.getInt(1));
 			
 			AlternativaDAO alternativaDAO = new AlternativaDAO();
 			questao.setIdquestao(rs.getInt(1));
@@ -91,6 +95,85 @@ public class QuestaoDAO {
 		}catch(Exception e) {
 			throw new RuntimeException(e);
 		}
+	}
+	
+	
+	public Questao pesquisaId(int idquestao) {
+		String sql = "select * from questao where idquestao = ?";
+		try {
+			stmt = conexao.prepareStatement(sql);
+			stmt.setInt(1, idquestao);
+			ResultSet rs = stmt.executeQuery();
+			Questao questao = new Questao();
+			
+		
+			if (rs.next()) {
+				questao.setIdquestao(rs.getInt("idquestao"));
+				
+				AreaDAO areaDAO = new AreaDAO();
+				questao.setArea(areaDAO.pesquisarId(rs.getInt("idarea")));
+				
+				DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
+				questao.setDisciplina(disciplinaDAO.pesquisarId(rs.getInt("iddisciplina")));
+				
+				OrigemDAO origemDAO = new OrigemDAO();
+				questao.setOrigem(origemDAO.pesquisarId(rs.getInt("idorigem")));
+				
+				ProfessorDAO professorDAO = new ProfessorDAO();
+				questao.setProfessor(professorDAO.pesquisarCpf(rs.getLong("professor_cpf")));
+				
+				AlternativaDAO alternativaDAO = new AlternativaDAO();
+				questao.setAlternativa(alternativaDAO.pesquisarId(rs.getInt("idquestao")));
+				
+				questao.SetImagem(rs.getBlob("imagem"));
+				questao.setEnunciado(rs.getString("enunciado"));
+			}
+			
+			stmt.close();
+			return questao;
+		}catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
+	
+	public ArrayList<Questao> lista(int idarea) {
+		String sql = "select * from questao where idarea = ?";
+		
+		try {
+			stmt = conexao.prepareStatement(sql);
+			stmt.setInt(1, idarea);
+            ResultSet rs = stmt.executeQuery();
+            
+            ArrayList<Questao> lista = new ArrayList<Questao>();
+            while (rs.next()) {
+                
+            	Questao questaoResul = new Questao();
+				questaoResul.setIdquestao(rs.getInt("idquestao"));	
+				
+	            ProfessorDAO professorDAO = new ProfessorDAO();
+	            questaoResul.setProfessor(professorDAO.pesquisarCpf(rs.getLong("professor_cpf")));
+	                 
+	            AreaDAO areaDAO = new AreaDAO();
+	            questaoResul.setArea(areaDAO.pesquisarId(rs.getInt("idarea")));
+	            
+	            DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
+	            questaoResul.setDisciplina(disciplinaDAO.pesquisarId(rs.getInt("iddisciplina")));
+	            
+	            OrigemDAO origemDAO = new OrigemDAO();
+	            questaoResul.setOrigem(origemDAO.pesquisarId(rs.getInt("idorigem")));
+	            
+	            questaoResul.setEnunciado(rs.getString("enunciado"));
+	            questaoResul.SetImagem(rs.getBlob("imagem"));
+            	
+    
+            	lista.add(questaoResul);
+            }
+            stmt.close();
+            return lista;
+		}catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 	}
 	
 	public Questao atualizar(Questao questao) {

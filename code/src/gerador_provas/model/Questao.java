@@ -12,7 +12,14 @@ public class Questao
   private Alternativa[] alternativa;
   private Blob imagem;
 
-  
+
+  public int getIdquestao() {
+		return idquestao;
+	}
+
+	public void setIdquestao(int idquestao) {
+		this.idquestao = idquestao;
+	}
   
   public Professor getProfessor() {return professor;}
   
@@ -55,12 +62,6 @@ public class Questao
  
  public Questao() {};
 
-public int getIdquestao() {
-	return idquestao;
-}
 
-public void setIdquestao(int idquestao) {
-	this.idquestao = idquestao;
-}
   
 }

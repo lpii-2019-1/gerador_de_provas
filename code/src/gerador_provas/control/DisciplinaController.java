@@ -11,9 +11,13 @@ public class DisciplinaController {
 		DisciplinaDAO disciplinaDAO = new DisciplinaDAO();
 		Disciplina resultado = disciplinaDAO.pesquisar(disciplina);
 		
-		if(resultado.getDisciplina().equals(disciplina.getDisciplina())) {
+		if(resultado.getDisciplina() != null) {
+			if(resultado.getDisciplina().equals(disciplina.getDisciplina())) {
+				return resultado.getIddisciplina();
+			}
 			return resultado.getIddisciplina();
 		}
+		
 		else {
 			disciplinaDAO.cadastrar(disciplina);
 			return disciplina.getIddisciplina();
