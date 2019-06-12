@@ -34,7 +34,7 @@ public class Prova {
 	public void adicionaQuestao(int idquestao) {
 		QuestaoDAO questaoDAO = new QuestaoDAO();
 		ArrayList<Questao> questoes = new ArrayList<Questao>();
-		//questoes.add(questaoDAO.pesquisaId(idquestao));
+		
 		Questao questao = new Questao();
 		
 		questao = questaoDAO.pesquisaId(idquestao);

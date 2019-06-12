@@ -36,114 +36,50 @@ public class TesteQuestao {
 		int op = input.nextInt();
 		
 		
-		// Apagar
-		 
-		 
-
-		Professor professor = new Professor(32456789143L, "Luiz Fernando", "Colégio Rua XX", "luizfernando@gmail.com", "abcd1234");
+				
 		
-		ProfessorController professorc = new ProfessorController();
-		long professor_cpf = professorc.insere(professor);
+		if(op == 1) {
 		
+			Scanner entrada = new Scanner(System.in);
+			/*System.out.println("Cadastro de professor");
+			
+			System.out.println("CPF: ");
+			long cpf = entrada.nextLong();
 		
-		String enunciado = "Tanto os Jogos Olímpicos quanto os Paralímpicos são mais que uma corrida por recordes, medalhas e busca de "
-				+ "excelência. Por trás deles está a filosofia do barão Pierre de Coubertin, fundados do Movimento Olímpico. "
-				+ "Como educador, ele viu nos Jogos a oportunidade para que os povos desenvolvessem valores, que poderiam ser aplicados não somente ao esporte, mas à educação e à sociedade. "
-				+ "Os valores olímpicos são: a amizade, a excelência e o respeito, enquanto os "
-				+ "valores paralímpicos são: a determinação, a coragem, a igualdade e a inspiração."
-				+ ""
-				+ "No contexto das aulas de Educação Física escolar, os valores olímpicos e paralímpicos podem ser identificados quando o colega";
-		
-		Origem origem = new Origem("ENEM", 2018);
-		OrigemController origemc = new OrigemController();
-		origem.setIdorigem(origemc.insere(origem));
-		
-		Area area = new Area("Linguagens, Códigos e suas Tecnologias");
-		AreaController areac = new AreaController();
-		area.setIdarea(areac.insere(area));
-		
-		
-		Disciplina disciplina =  new Disciplina("Português");
-		DisciplinaController disciplinac = new DisciplinaController();
-		disciplina.setIddisciplina(disciplinac.insere(disciplina));
-
-		
-		Alternativa[] alternativas = new Alternativa[5];
-		
-		Alternativa a1 = new Alternativa();
-		a1.setAlternativa("procura entender o próximo, assumindo atitudes positivas como simpatia, empatia, "
-				+ "honestidade, compaixão, confiança e solidariedade, o que caracteriza o valor da igualdade. ");
-		a1.setCorreta(false);
-		
-		Alternativa a2 = new Alternativa();
-		a2.setAlternativa("Faz com que todos possam ser iguais e receber o mesmo tratamento, assegurando imparcialidade, "
-				+ "oportunidades e tratamentos iguais a todos, o que caracteriza o valor da amizade.");
-		a2.setCorreta(false);
-		
-		Alternativa a3 = new Alternativa();
-		a3.setAlternativa("Dá o melhor de si na vivência das diversas atividades relacionadas ao esporte ou aos jogos, "
-				+ "participando e progredindo de acordo com seus objetivos, o que caracteriza o valor da coragem. ");
-		a3.setCorreta(false);
-		
-		Alternativa a4 = new Alternativa();
-		a4.setAlternativa("Manifesta a habilidade de enfrentar a dor, o sofrimento, o medo, a incerteza e a intimidação nas atividades,"
-				+ " agindo corretamente contra a vergonha, a desonra e o desânimo, o que caracteriza o valor da determinação. ");
-		a4.setCorreta(false);
-		
-		Alternativa a5 = new Alternativa();
-		a5.setAlternativa("Manifesta a habilidade de enfrentar a dor, o sofrimento, o medo, a incerteza e a intimidação nas atividades, "
-				+ "agindo corretamente contra a vergonha, a desonra e o desânimo, o que caracteriza o valor da determinação. ");
-		a5.setCorreta(true);
-		
-		alternativas[0] = a1;
-		alternativas[1] = a2;
-		alternativas[2] = a3;
-		alternativas[3] = a4;
-		alternativas[4] = a5;
-		
-		
-		
-		Questao questao = new Questao(professor, area, disciplina, origem, enunciado, alternativas);
-		
-		questaoc.insere(questao);
-
-		
-
-		 
-		 
-		 
-		 //Apagar  
-		
-		
-		
-		
-		
-		/*if(op == 1) {
-		
-			Professor professor = new Professor(32456789143L, "Luiz Fernando", "Colégio Rua XX", "luizfernando@gmail.com", "abcd1234");
+			
+			System.out.println("Nome: ");
+			String nome = entrada.nextLine();
+			
+			System.out.println("Instituicao: ");
+			String instituicao = entrada.nextLine(); 
+			
+			System.out.println("E-mail: ");
+			String email = entrada.nextLine();
+			
+			System.out.println("Senha: ");
+			String senha = entrada.nextLine();
+			
+			Professor professor = new Professor(cpf,nome,instituicao,email,senha); */
+			
+			Professor professor = new Professor(12457981236L, "Maria Lúcia", "Escola Estadual Francisco da Silva", "escola.lucia@gmail.com", "1234abcd");
+			
 			
 			ProfessorController professorc = new ProfessorController();
 			long professor_cpf = professorc.insere(professor);
 			
 			
-			String enunciado = "Tanto os Jogos Olímpicos quanto os Paralímpicos são mais que uma corrida por recordes, medalhas e busca de "
-					+ "excelência. Por trás deles está a filosofia do barão Pierre de Coubertin, fundados do Movimento Olímpico. "
-					+ "Como educador, ele viu nos Jogos a oportunidade para que os povos desenvolvessem valores, que poderiam ser aplicados não somente ao esporte, mas à educação e à sociedade. "
-					+ "Os valores olímpicos são: a amizade, a excelência e o respeito, enquanto os "
-					+ "valores paralímpicos são: a determinação, a coragem, a igualdade e a inspiração."
-					+ ""
-					+ "No contexto das aulas de Educação Física escolar, os valores olímpicos e paralímpicos podem ser identificados quando o colega";
+			String enunciado = "O sonorizador é um dispositivo físico implantado sobre a superfície de uma rodovia de modo que provoque uma trepidação e ruído quando da passagem de um veículo sobre ele, alertando para uma situação atípica à frente, como obras, pedágios ou travessia de pedestres. Ao passar sobre os sonorizadores, a suspensão do veículo sofre vibrações que produzem ondas sonoras, resultando em um barulho peculiar. Considere um veículo que passe com velocidade constante igual a 108km/h sobre um sonorizador cujas faixas são separadas por uma distância de 8cm.";
 			
 			Origem origem = new Origem("ENEM", 2018);
 			OrigemController origemc = new OrigemController();
 			origem.setIdorigem(origemc.insere(origem));
 			
-			Area area = new Area("Linguagens, Códigos e suas Tecnologias");
+			Area area = new Area("Ciências da Natureza e suas Tecnologias");
 			AreaController areac = new AreaController();
 			area.setIdarea(areac.insere(area));
 			
 			
-			Disciplina disciplina =  new Disciplina("Português");
+			Disciplina disciplina =  new Disciplina("Física");
 			DisciplinaController disciplinac = new DisciplinaController();
 			disciplina.setIddisciplina(disciplinac.insere(disciplina));
 
@@ -151,29 +87,24 @@ public class TesteQuestao {
 			Alternativa[] alternativas = new Alternativa[5];
 			
 			Alternativa a1 = new Alternativa();
-			a1.setAlternativa("procura entender o próximo, assumindo atitudes positivas como simpatia, empatia, "
-					+ "honestidade, compaixão, confiança e solidariedade, o que caracteriza o valor da igualdade. ");
+			a1.setAlternativa("8,6 hertz.");
 			a1.setCorreta(false);
 			
 			Alternativa a2 = new Alternativa();
-			a2.setAlternativa("Faz com que todos possam ser iguais e receber o mesmo tratamento, assegurando imparcialidade, "
-					+ "oportunidades e tratamentos iguais a todos, o que caracteriza o valor da amizade.");
+			a2.setAlternativa("13,5 hertz.");
 			a2.setCorreta(false);
 			
 			Alternativa a3 = new Alternativa();
-			a3.setAlternativa("Dá o melhor de si na vivência das diversas atividades relacionadas ao esporte ou aos jogos, "
-					+ "participando e progredindo de acordo com seus objetivos, o que caracteriza o valor da coragem. ");
-			a3.setCorreta(false);
+			a3.setAlternativa("375 hertz.");
+			a3.setCorreta(true);
 			
 			Alternativa a4 = new Alternativa();
-			a4.setAlternativa("Manifesta a habilidade de enfrentar a dor, o sofrimento, o medo, a incerteza e a intimidação nas atividades,"
-					+ " agindo corretamente contra a vergonha, a desonra e o desânimo, o que caracteriza o valor da determinação. ");
+			a4.setAlternativa("1350 hertz.");
 			a4.setCorreta(false);
 			
 			Alternativa a5 = new Alternativa();
-			a5.setAlternativa("Manifesta a habilidade de enfrentar a dor, o sofrimento, o medo, a incerteza e a intimidação nas atividades, "
-					+ "agindo corretamente contra a vergonha, a desonra e o desânimo, o que caracteriza o valor da determinação. ");
-			a5.setCorreta(true);
+			a5.setAlternativa("4860 hertz.");
+			a5.setCorreta(false);
 			
 			alternativas[0] = a1;
 			alternativas[1] = a2;
@@ -187,10 +118,7 @@ public class TesteQuestao {
 			
 			questaoc.insere(questao);
 
-			
-			
-			
-		} */
+		}
 		
 		if(op == 2) {
 
@@ -223,13 +151,15 @@ public class TesteQuestao {
 		
 		else if(op == 3) {
 			Prova prova = new Prova();
-				
+			Questao questao = new Questao();
+			
 			//prova.setProfessor(professor);
 			prova.setCabecalho("Fazendo um teste de cabecalho...");
 			
 			QuestaoDAO aquestaoDAO = new QuestaoDAO();
 			
-			ArrayList<Questao> questoes = aquestaoDAO.lista(1);
+			
+			ArrayList<Questao> questoes = aquestaoDAO.lista(2);
 			//ArrayList<Questao> questaoInserida = new ArrayList<Questao>();
 			
 			prova.setProfessor(questao.getProfessor());
@@ -245,9 +175,11 @@ public class TesteQuestao {
 		     //QuestaoDAO questaoDAO = new QuestaoDAO();
 		     //questaoDAO.pesquisaId(1);
 		     
-		     prova.adicionaQuestao(1);
+		     prova.adicionaQuestao(2);
+		     prova.adicionaQuestao(3);
 		     
-		     System.out.println(prova.getQuestoes().get(0).getEnunciado());
+		     System.out.println("\n" + prova.getQuestoes().get(0).getEnunciado());
+		     System.out.println("\n" + prova.getQuestoes().get(1).getEnunciado());
 	   
 		}
 	}
