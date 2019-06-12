@@ -8,6 +8,8 @@ import gerador_provas.conexao.Conexao;
 import gerador_provas.model.Alternativa;
 import gerador_provas.model.Disciplina;
 import gerador_provas.model.Questao;
+import java.sql.Blob;
+import java.sql.SQLException;
 
 
 public class AlternativaDAO {
@@ -61,29 +63,39 @@ public class AlternativaDAO {
 				stmt.close();
 	            return alternativaResul;
 			}	
-		}catch(Exception e) {
+		}catch(SQLException e) {
 			throw new RuntimeException(e);
 		}
 	}
-	public Alternativa atualizar(Alternativa alternativa) {
-		String sql = "update alternativa set alternativa = ?, imagem = ?, correta = ? where idalternativa = ?;";
-		try {
-			stmt = conexao.prepareStatement(sql);
-			stmt.setString(1, alternativa.getAlternativa());
-			stmt.setBlob(2, alternativa.getImagem());
-			stmt.setBoolean(3, alternativa.getCorreta());
-			stmt.setInt(3, alternativa.getIdAlternativa());
+	     
+                
+                 public void atualizar (Alternativa alternativa) {
+		       String sql = "update alternativa set alternativa = ?, imagem = ?, correta = ? where idalternativa = ?;";
 
+			try {
+				stmt = conexao.prepareStatement(sql);
+				stmt.setString(1, alternativa.getAlternativa());
+				stmt.setBlob(2, alternativa.getImagem());
+				stmt.setBoolean(3, alternativa.getCorreta());
+				stmt.execute();
+				stmt.close();
+			}catch (SQLException e) {
+				throw new RuntimeException(e);
+			}
 			
-			stmt.execute();
-			stmt.close();
-		}catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-		
-		return alternativa;
 		
 	}
-	
-	
-}
+	  public void deletar(Alternativa alternativa) {
+			String sql = "delete from alternativa where idalternativa = ?;";
+			try {
+                            System.out.println(alternativa.getAlternativa());
+				stmt = conexao.prepareStatement(sql);
+                                stmt.setInt(1, alternativa.getIdAlternativa());
+				stmt.execute();
+				stmt.close();
+			} catch (SQLException e) {
+                            e.printStackTrace();
+				throw new RuntimeException(e);
+			
+                       
+}}}

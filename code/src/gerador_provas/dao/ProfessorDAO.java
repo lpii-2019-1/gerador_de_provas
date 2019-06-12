@@ -96,6 +96,23 @@ public class ProfessorDAO {
 		return professor;
 		
 	}
+        public Professor deletar(Professor professor) {
+			String sql = "delete from professor where cpf = ?;";
+			try {
+                            System.out.println(professor.getProfessor());
+				stmt = conexao.prepareStatement(sql);
+                                stmt.setInt(1, professor.getProfessor());
+				stmt.execute();
+				stmt.close();
+			} catch (SQLException e) {
+				throw new RuntimeException(e);
+			}
+                        
+                        
+			
+			return professor;
+			
+		}
 	
 	
 }

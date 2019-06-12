@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import gerador_provas.conexao.Conexao;
 import gerador_provas.model.Origem;
-import gerador_provas.model.Professor;
+import java.sql.SQLException;
 
 
 
@@ -122,20 +122,38 @@ public class OrigemDAO {
 			 throw new RuntimeException(e);
 		 }
 	 }
-	 public Origem atualizar(Origem origem) {
+	 public void atualizar(Origem origemUp) {
 			String sql = "update origem set origem = ?, ano = ? where idorigem = ?;";
 			try {
 				stmt = conexao.prepareStatement(sql);
-				stmt.setString(1, origem.getOrigem());
-				stmt.setInt(2, origem.getAno());
-				stmt.setInt(3, origem.getIdorigem());
+				stmt.setString(1, origemUp.getOrigem());
+				stmt.setInt(2, origemUp.getAno());
+				stmt.setInt(3, origemUp.getIdorigem());
 				stmt.execute();
 				stmt.close();
-			}catch (Exception e) {
+			}catch (SQLException e) {
 				throw new RuntimeException(e);
 			}
 			
-			return origem;
+			
+			
+		}
+           public void deletar(Origem origem) {
+			String sql = "delete from origem where idorigem = ?;";
+			try {
+                            System.out.println(origem.getOrigem());
+				stmt = conexao.prepareStatement(sql);
+                                stmt.setInt(1, origem.getIdorigem());
+				stmt.execute();
+				stmt.close();
+			} catch (SQLException e) {
+                            e.printStackTrace();
+				throw new RuntimeException(e);
+			}
+                        
+                        
+			
+			
 			
 		}
 	 

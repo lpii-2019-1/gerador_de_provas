@@ -16,5 +16,16 @@ public class OrigemController {
 			origemDAO.cadastrar(origem);
 			return origem.getIdorigem();
 		}
+                
 	}
+        public void atualizar(Origem origem){
+            OrigemDAO origemDAO = new OrigemDAO();    
+            
+            origemDAO.atualizar(new Origem(origem.getIdorigem(), origem.getOrigem(), origem.getAno()));
+        }
+        public void deletar(Origem origem){
+            OrigemDAO origemDAO = new OrigemDAO();
+            
+            origemDAO.deletar(new Origem(origem.getIdorigem()));
+        }
 }
