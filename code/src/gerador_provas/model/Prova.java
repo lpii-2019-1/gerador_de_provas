@@ -39,7 +39,10 @@ public class Prova {
 		
 		questao = questaoDAO.pesquisaId(idquestao);
 		questoes.add(questao);
-		this.setQuestoes(questoes);
+		this.questoes.add(questao);
+
+		this.questoes = questoes;
+		//this.setQuestoes(questoes);
 		
 	}
 }

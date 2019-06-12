@@ -180,6 +180,7 @@ public class TesteQuestao {
 		     
 		     System.out.println("\n" + prova.getQuestoes().get(0).getEnunciado());
 		     System.out.println("\n" + prova.getQuestoes().get(1).getEnunciado());
+		     prova.getQuestoes().get(1);
 	   
 		}
 	}
