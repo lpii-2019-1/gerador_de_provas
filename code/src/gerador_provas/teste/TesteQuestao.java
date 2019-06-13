@@ -220,7 +220,7 @@ public class TesteQuestao {
 					     
 					     System.out.println(questaoc.deletar(iddelete));
 					     
-					 	System.out.println("\nMENU\n1 - Cadastrar Questoes      \n2 - Deletar Questoes   \n3 - Gerar Provas \n4 - Sair");
+					 	System.out.println("\nMENU\n1 - Cadastrar Questoes      \n2 - Deletar Questoes   \n3 - Gerar Provas \n0 - Sair");
 					    int opcao = entrada.nextInt();
 						operacao = opcao;
 						
@@ -270,7 +270,7 @@ public class TesteQuestao {
 
 					    System.out.println(prova.gerarPDF(provaResul));
 					    
-						System.out.println("\nMENU\n1 - Cadastrar Questoes      \n2 - Deletar Questoes   \n3 - Gerar Provas \n4 - Sair");
+						System.out.println("\nMENU\n1 - Cadastrar Questoes      \n2 - Deletar Questoes   \n3 - Gerar Provas \n0 - Sair");
 					    int opcao = entrada.nextInt();
 						operacao = opcao;
 						
@@ -285,35 +285,7 @@ public class TesteQuestao {
 				System.out.println("Login invalido");
 			}
 		}
-		
-		/*if(op == 5) {
-
-			// Arrumando atualização do questao.
-			Questao questaoAtualizar = new Questao();
-			
-			questaoAtualizar.setEnunciado("Para serem absorvidos pelas células do intestino, os lipídios ingeridos precisam ser primeiramente emulsificados. Nessa etapa da digestão, torna-se necessária a ação dos ácidos biliares, visto que os lipídios apresentam uma natureza apolar e são insolúveis em água.\n" + 
-					"\n" + 
-					"Esses ácidos atuam no processo de modo a");
-			
-			
-			QuestaoDAO questaoDAO = new QuestaoDAO();
-			Questao questaoAtualizada = questaoDAO.pesquisar(questaoAtualizar);
-			
-			
-			Area novaArea = new Area();
-			questaoAtualizada.setArea(novaArea);
-			
-			Disciplina novaDisciplina = new Disciplina();
-			questaoAtualizada.setDisciplina(novaDisciplina);
-			
-			Origem novaOrigem = new Origem(1);
-			questaoAtualizada.setOrigem(novaOrigem);
-			
-			questaoc.atualiza(questaoAtualizada);
-			
-			//questaoDAO.pesquisar(questaoAtualizar);			
-		}*/
-		
+				
 	}
 
 }
