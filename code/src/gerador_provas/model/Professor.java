@@ -16,6 +16,10 @@ public class Professor {
     	this.senha = senha;
     }
     
+    public Professor() {
+    	
+    }
+    
     public long getCpf() {
         return Cpf;
     }

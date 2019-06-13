@@ -135,31 +135,21 @@ public class AlternativaDAO {
 			stmt.setBlob(2, alternativa.getImagem());
 			stmt.setBoolean(3, alternativa.getCorreta());
 			stmt.setInt(3, alternativa.getIdAlternativa());
-
-			try {
-				stmt = conexao.prepareStatement(sql);
-				stmt.setString(1, alternativa.getAlternativa());
-				stmt.setBlob(2, alternativa.getImagem());
-				stmt.setBoolean(3, alternativa.getCorreta());
-				stmt.execute();
-				stmt.close();
-			}catch (SQLException e) {
-				throw new RuntimeException(e);
-			}
-			
+		}catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+		return alternativa;
 		
 	}
 	  public void deletar(Alternativa alternativa) {
 			String sql = "delete from alternativa where idalternativa = ?;";
 			try {
-                            System.out.println(alternativa.getAlternativa());
-				stmt = conexao.prepareStatement(sql);
-                                stmt.setInt(1, alternativa.getIdAlternativa());
+            	stmt = conexao.prepareStatement(sql);
+                stmt.setInt(1, alternativa.getIdAlternativa());
 				stmt.execute();
 				stmt.close();
-			} catch (SQLException e) {
-                            e.printStackTrace();
+			}catch (SQLException e) {
 				throw new RuntimeException(e);
-			
-                       
-}}}
+			}
+		}
+	}

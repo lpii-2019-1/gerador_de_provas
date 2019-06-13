@@ -18,15 +18,15 @@ public class TipoDAO {
 	}
 	
 	public void cadastrar(Tipo tipo, Prova prova) {
-		String sql = "inser into tipo(idprova,idtipo,idquestao,posicao,idalterantiva,letra) values (?,?,?,?,?,?)";
+		String sql = "inser into tipo(idprova,idtipo,idquestao,posicao,idalternativa,letra) values (?,?,?,?,?,?)";
 		
 		try {
 			stmt= conexao.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			stmt.setInt(1, tipo.getProva().getIdprova());
 			stmt.setInt(2,tipo.getIdtipo());
-			stmt.setInt(3,tipo.getQuestoes().getIdquestao());
+			stmt.setInt(3,tipo.getQuestoes().get(0).getIdquestao());
 			stmt.setInt(4,tipo.getPosicao());
-			stmt.setInt(5, tipo.getAlternativas().getIdAlternativa());
+			stmt.setInt(5, tipo.getQuestoes().get(0).getAlternativas()[0].getIdAlternativa());
 			stmt.setString(6, tipo.getLetra());
 			
 			stmt.execute(); 

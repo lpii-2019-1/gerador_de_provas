@@ -1,10 +1,6 @@
 package gerador_provas.teste;
 
 
-import gerador_provas.model.Area;
-import gerador_provas.model.Questao;
-import model.Aluno;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -14,14 +10,16 @@ import gerador_provas.control.OrigemController;
 import gerador_provas.control.ProfessorController;
 import gerador_provas.control.ProvaController;
 import gerador_provas.control.QuestaoController;
-import gerador_provas.dao.AlternativaDAO;
-import gerador_provas.dao.AreaDAO;
+import gerador_provas.dao.ProfessorDAO;
+import gerador_provas.dao.ProvaDAO;
 import gerador_provas.dao.QuestaoDAO;
 import gerador_provas.model.Alternativa;
+import gerador_provas.model.Area;
 import gerador_provas.model.Disciplina;
 import gerador_provas.model.Origem;
 import gerador_provas.model.Professor;
 import gerador_provas.model.Prova;
+import gerador_provas.model.Questao;
 
 public class TesteQuestao {
 
@@ -32,16 +30,16 @@ public class TesteQuestao {
 		
 		Scanner input = new Scanner(System.in);
 		
-		System.out.println("1 - Cadastrar Questao  \n2 - Atualizar \n3 - Gerar Prova");
-		int op = input.nextInt();
-		
+		System.out.println("1 - Cadastrar Professor  \n2 - Login \n3 - Gerar Prova");
+		String wv = input.nextLine();
+		int op = Integer.parseInt(wv);
 		
 				
 		
 		if(op == 1) {
-		
+			
 			Scanner entrada = new Scanner(System.in);
-			/*System.out.println("Cadastro de professor");
+			System.out.println("Cadastro de professor");
 			
 			System.out.println("CPF: ");
 			long cpf = entrada.nextLong();
@@ -59,9 +57,15 @@ public class TesteQuestao {
 			System.out.println("Senha: ");
 			String senha = entrada.nextLine();
 			
-			Professor professor = new Professor(cpf,nome,instituicao,email,senha); */
+			Professor professor = new Professor(cpf,nome,instituicao,email,senha); 
 			
-			Professor professor = new Professor(12457981236L, "Maria Lúcia", "Escola Estadual Francisco da Silva", "escola.lucia@gmail.com", "1234abcd");
+			System.out.println(cpf);
+			System.out.println(nome);
+			System.out.println(instituicao);
+			System.out.println(email);
+			System.out.println(senha);
+			
+			//Professor professor = new Professor(12457981236L, "Maria Lúcia", "Escola Estadual Francisco da Silva", "escola.lucia@gmail.com", "1234abcd");
 			
 			
 			ProfessorController professorc = new ProfessorController();
@@ -78,7 +82,7 @@ public class TesteQuestao {
 			AreaController areac = new AreaController();
 			area.setIdarea(areac.insere(area));
 			
-			
+			// Tô aqui Ô!!!
 			Disciplina disciplina =  new Disciplina("Física");
 			DisciplinaController disciplinac = new DisciplinaController();
 			disciplina.setIddisciplina(disciplinac.insere(disciplina));
@@ -120,7 +124,124 @@ public class TesteQuestao {
 
 		}
 		
-		if(op == 2) {
+		
+		else if(op == 2) {
+			Scanner entrada = new Scanner(System.in);
+			
+			System.out.print("CPF: ");
+			long cpf = entrada.nextLong();
+			System.out.print("Senha: ");
+			String senha = entrada.next();
+			
+			ProfessorDAO professorDAO = new ProfessorDAO();
+			Professor professor = new Professor();
+			
+			professor = professorDAO.pesquisarCpf(cpf);
+			if(professor.getCpf() == cpf && professor.getSenha().equals(senha)) {
+				System.out.println("\n Bem-vinda(o) " + professor.getNome() + "\n");
+				
+				System.out.println("MENU\n1 - Cadastrar Questoes      \n2 - Deletar Questoes   \n3 - Gerar Provas \n4 - Sair");
+				
+				int operacao = entrada.nextInt();
+				while(operacao != 4) {
+					
+					if(operacao == 1) {
+						
+						System.out.println("\n*Cadastro de questoes*\n");
+						
+						System.out.print("Origem: ");
+						String orig = entrada.next();
+						System.out.print("Ano: ");
+						int data = entrada.nextInt();
+						
+						System.out.println("Enunciado: ");
+						String enunciado = entrada.nextLine();
+						
+						System.out.println(orig + " " + data);
+						System.out.println("\n --" + enunciado);
+						
+						
+						/*Origem origem = new Origem("ENEM", 2018);
+						OrigemController origemc = new OrigemController();
+						origem.setIdorigem(origemc.insere(origem)); */
+						
+						int opcao = entrada.nextInt();
+						operacao = opcao;
+					}
+					else if(operacao == 2) {
+						
+						int opcao = entrada.nextInt();
+						operacao = opcao;
+						
+					}
+					else if(operacao == 3) {
+						
+						Prova prova = new Prova();
+						Questao questao = new Questao();
+						ProvaController provac = new ProvaController();
+						
+						prova.setCabecalho("Escola Estadual 31 de Fevereiro");
+						
+						QuestaoDAO aquestaoDAO = new QuestaoDAO();
+						
+						
+						ArrayList<Questao> questoes = aquestaoDAO.lista(2);
+						prova.setProfessor(professor);
+						
+						
+					     for (Questao q : questoes) {
+					    	  System.out.println("\nID: " + q.getIdquestao());
+					          System.out.println("Enunciado: \n"+ q.getEnunciado());
+					          System.out.println("Origem: " + q.getProfessor().getNome());  
+					     }
+					     
+					     
+					     //QuestaoDAO questaoDAO = new QuestaoDAO();
+					     //questaoDAO.pesquisaId(1);
+					     
+					     System.out.println("\n==== Inserir questoes ====");
+					     Scanner leitura = new Scanner(System.in);
+					     String escolha = "s";
+					     while(!escolha.equals("n")) {
+					    	 System.out.print("ID: ");
+					    	 String cod = leitura.nextLine(); 
+					    	 int id = Integer.parseInt(cod);
+					    	 prova.adicionaQuestao(id);
+					    	 System.out.print("Inserir outra questao ? ");
+					    	 escolha = leitura.nextLine();
+					     }
+					     
+					     
+					    
+					     //System.out.println(prova.getQuestoes().size());
+					     //System.out.println(prova.getQuestoes().get(0).getEnunciado());
+					     //System.out.println(prova.getQuestoes().get(1).getEnunciado());
+					    System.out.println("======================================================\n");
+					    
+					    //provac.insere(prova);
+					    
+					    System.out.println(prova.gerarPDF(prova));
+					    //ProvaDAO provaDAO = new ProvaDAO();
+					    //provaDAO.cadastrar(prova);
+
+						
+						
+						int opcao = entrada.nextInt();
+						operacao = opcao;
+						
+					}
+					
+				}
+				
+				
+			}
+			
+			else {
+				System.out.println("Login invalido");
+			}
+		}
+		
+		if(op == 5) {
 
 			// Arrumando atualização do questao.
 			Questao questaoAtualizar = new Questao();
@@ -149,20 +270,22 @@ public class TesteQuestao {
 			//questaoDAO.pesquisar(questaoAtualizar);			
 		}
 		
-		else if(op == 3) {
+		/*else if(op == 3) {
+			
+			Scanner entrada = new Scanner(System.in);
+			
 			Prova prova = new Prova();
 			Questao questao = new Questao();
+			ProvaController provac = new ProvaController();
 			
-			//prova.setProfessor(professor);
-			prova.setCabecalho("Fazendo um teste de cabecalho...");
+			prova.setCabecalho("Escola Estadual 31 de Fevereiro");
 			
 			QuestaoDAO aquestaoDAO = new QuestaoDAO();
 			
 			
 			ArrayList<Questao> questoes = aquestaoDAO.lista(2);
-			//ArrayList<Questao> questaoInserida = new ArrayList<Questao>();
-			
 			prova.setProfessor(questao.getProfessor());
+			System.out.println(questao.getProfessor());
 			
 			
 		     for (Questao q : questoes) {
@@ -175,14 +298,32 @@ public class TesteQuestao {
 		     //QuestaoDAO questaoDAO = new QuestaoDAO();
 		     //questaoDAO.pesquisaId(1);
 		     
-		     prova.adicionaQuestao(2);
-		     prova.adicionaQuestao(3);
+		     System.out.println("\n==== Inserir questoes ====");
 		     
-		     System.out.println("\n" + prova.getQuestoes().get(0).getEnunciado());
-		     System.out.println("\n" + prova.getQuestoes().get(1).getEnunciado());
-		     prova.getQuestoes().get(1);
-	   
-		}
+		     String escolha = "s";
+		     while(!escolha.equals("n")) {
+		    	 System.out.print("ID: ");
+		    	 String cod = entrada.nextLine(); 
+		    	 int id = Integer.parseInt(cod);
+		    	 prova.adicionaQuestao(id);
+		    	 System.out.print("Inserir outra questao ? ");
+		    	 escolha = entrada.nextLine();
+		     }
+		     
+		     
+		    
+		     //System.out.println(prova.getQuestoes().size());
+		     //System.out.println(prova.getQuestoes().get(0).getEnunciado());
+		     //System.out.println(prova.getQuestoes().get(1).getEnunciado());
+		    System.out.println("======================================================\n");
+		    
+		    //provac.insere(prova);
+		  
+		    ProvaDAO provaDAO = new ProvaDAO();
+		    provaDAO.cadastrar(prova);
+		   
+		     
+		} */
 	}
 
 }

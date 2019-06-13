@@ -6,11 +6,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import dao.CidadeDAO;
 import gerador_provas.conexao.Conexao;
-import gerador_provas.model.Professor;
 import gerador_provas.model.Questao;
-import model.Aluno;
 
 
 public class QuestaoDAO {
