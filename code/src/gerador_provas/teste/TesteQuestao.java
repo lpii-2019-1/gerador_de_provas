@@ -12,6 +12,7 @@ import gerador_provas.control.OrigemController;
 import gerador_provas.control.ProfessorController;
 import gerador_provas.control.ProvaController;
 import gerador_provas.control.QuestaoController;
+import gerador_provas.dao.AreaDAO;
 import gerador_provas.dao.ProfessorDAO;
 import gerador_provas.dao.ProvaDAO;
 import gerador_provas.dao.QuestaoDAO;
@@ -32,7 +33,7 @@ public class TesteQuestao {
 		
 		Scanner input = new Scanner(System.in);
 		
-		System.out.println("1 - Cadastrar Professor  \n2 - Login \n3 - Gerar Prova");
+		System.out.println("1 - Cadastrar Professor  \n2 - Login \n3 - ");
 		String wv = input.nextLine();
 		int op = Integer.parseInt(wv);
 		
@@ -67,61 +68,8 @@ public class TesteQuestao {
 			System.out.println(email);
 			System.out.println(senha);
 			
-			//Professor professor = new Professor(12457981236L, "Maria Lúcia", "Escola Estadual Francisco da Silva", "escola.lucia@gmail.com", "1234abcd");
-			
-			
 			ProfessorController professorc = new ProfessorController();
 			long professor_cpf = professorc.insere(professor);
-			
-			
-			String enunciado = "O sonorizador é um dispositivo físico implantado sobre a superfície de uma rodovia de modo que provoque uma trepidação e ruído quando da passagem de um veículo sobre ele, alertando para uma situação atípica à frente, como obras, pedágios ou travessia de pedestres. Ao passar sobre os sonorizadores, a suspensão do veículo sofre vibrações que produzem ondas sonoras, resultando em um barulho peculiar. Considere um veículo que passe com velocidade constante igual a 108km/h sobre um sonorizador cujas faixas são separadas por uma distância de 8cm.";
-			
-			Origem origem = new Origem("ENEM", 2018);
-			OrigemController origemc = new OrigemController();
-			origem.setIdorigem(origemc.insere(origem));
-			
-			Area area = new Area("Ciências da Natureza e suas Tecnologias");
-			AreaController areac = new AreaController();
-			area.setIdarea(areac.insere(area));
-			
-			// Tô aqui Ô!!!
-			Disciplina disciplina =  new Disciplina("Física");
-			DisciplinaController disciplinac = new DisciplinaController();
-			disciplina.setIddisciplina(disciplinac.insere(disciplina));
-
-			
-			Alternativa[] alternativas = new Alternativa[5];
-			
-			Alternativa a1 = new Alternativa();
-			a1.setAlternativa("8,6 hertz.");
-			a1.setCorreta(false);
-			
-			Alternativa a2 = new Alternativa();
-			a2.setAlternativa("13,5 hertz.");
-			a2.setCorreta(false);
-			
-			Alternativa a3 = new Alternativa();
-			a3.setAlternativa("375 hertz.");
-			a3.setCorreta(true);
-			
-			Alternativa a4 = new Alternativa();
-			a4.setAlternativa("1350 hertz.");
-			a4.setCorreta(false);
-			
-			Alternativa a5 = new Alternativa();
-			a5.setAlternativa("4860 hertz.");
-			a5.setCorreta(false);
-			
-			alternativas[0] = a1;
-			alternativas[1] = a2;
-			alternativas[2] = a3;
-			alternativas[3] = a4;
-			alternativas[4] = a5;
-			
-			//Questao questao = new Questao(professor, area, disciplina, origem, enunciado, alternativas);
-			
-			//questaoc.insere(questao);
-
 		}
 		
 		
@@ -170,7 +118,7 @@ public class TesteQuestao {
 						
 						
 						System.out.println("Insira agora as alternativas...");
-						System.out.println("Informe por último a alternativa correta");
+						
 						
 						Alternativa[] alternativas = new Alternativa[5];
 						
@@ -202,7 +150,7 @@ public class TesteQuestao {
 						String alter5 = entrada_dados.nextLine();
 						Alternativa a5 = new Alternativa();
 						a5.setAlternativa(alter5);
-						a5.setCorreta(true);
+						a5.setCorreta(false);
 						
 						alternativas[0] = a1;
 						alternativas[1] = a2;
@@ -245,7 +193,6 @@ public class TesteQuestao {
 						questaoc.insere(questao);
 						
 						int opcao = entrada.nextInt();
-						//int opcao = Integer.parseInt(we);
 						operacao = opcao;
 					}
 					else if(operacao == 2) {
@@ -260,23 +207,25 @@ public class TesteQuestao {
 						Questao questao = new Questao();
 						ProvaController provac = new ProvaController();
 						
-						prova.setCabecalho("Escola Estadual 31 de Fevereiro");
+						String cabecalho = entrada.nextLine();
+						
+						prova.setCabecalho(cabecalho);
 						
 						QuestaoDAO aquestaoDAO = new QuestaoDAO();
 						
-						ArrayList<Questao> questoes = aquestaoDAO.lista(2);
+						
+						ArrayList<Questao> questoes = aquestaoDAO.lista();
 						prova.setProfessor(professor);
 						
 						
 					     for (Questao q : questoes) {
 					    	  System.out.println("\nID: " + q.getIdquestao());
 					          System.out.println("Enunciado: \n"+ q.getEnunciado());
+					          System.out.println("Area: " + q.getArea().getArea());
+					          System.out.println("Disciplina: " + q.getDisciplina().getDisciplina());
 					          System.out.println("Origem: " + q.getProfessor().getNome());  
 					     }
 					     
-					     
-					     //QuestaoDAO questaoDAO = new QuestaoDAO();
-					     //questaoDAO.pesquisaId(1);
 					     
 					     System.out.println("\n==== Inserir questoes ====");
 					     Scanner leitura = new Scanner(System.in);
@@ -297,7 +246,8 @@ public class TesteQuestao {
 
 					    System.out.println(prova.gerarPDF(provaResul));
 					    
-						int opcao = entrada.nextInt();
+						System.out.println("\nMENU\n1 - Cadastrar Questoes      \n2 - Deletar Questoes   \n3 - Gerar Provas \n4 - Sair");
+					    int opcao = entrada.nextInt();
 						operacao = opcao;
 						
 					}
@@ -312,7 +262,7 @@ public class TesteQuestao {
 			}
 		}
 		
-		if(op == 5) {
+		/*if(op == 5) {
 
 			// Arrumando atualização do questao.
 			Questao questaoAtualizar = new Questao();
@@ -335,66 +285,11 @@ public class TesteQuestao {
 			Origem novaOrigem = new Origem(1);
 			questaoAtualizada.setOrigem(novaOrigem);
 			
-			
 			questaoc.atualiza(questaoAtualizada);
 			
 			//questaoDAO.pesquisar(questaoAtualizar);			
-		}
+		}*/
 		
-		/*else if(op == 3) {
-			
-			Scanner entrada = new Scanner(System.in);
-			
-			Prova prova = new Prova();
-			Questao questao = new Questao();
-			ProvaController provac = new ProvaController();
-			
-			prova.setCabecalho("Escola Estadual 31 de Fevereiro");
-			
-			QuestaoDAO aquestaoDAO = new QuestaoDAO();
-			
-			
-			ArrayList<Questao> questoes = aquestaoDAO.lista(2);
-			prova.setProfessor(questao.getProfessor());
-			System.out.println(questao.getProfessor());
-			
-			
-		     for (Questao q : questoes) {
-		    	  System.out.println("\nID: " + q.getIdquestao());
-		          System.out.println("Enunciado: \n"+ q.getEnunciado());
-		          System.out.println("Origem: " + q.getProfessor().getNome());  
-		     }
-		     
-		     
-		     //QuestaoDAO questaoDAO = new QuestaoDAO();
-		     //questaoDAO.pesquisaId(1);
-		     
-		     System.out.println("\n==== Inserir questoes ====");
-		     
-		     String escolha = "s";
-		     while(!escolha.equals("n")) {
-		    	 System.out.print("ID: ");
-		    	 String cod = entrada.nextLine(); 
-		    	 int id = Integer.parseInt(cod);
-		    	 prova.adicionaQuestao(id);
-		    	 System.out.print("Inserir outra questao ? ");
-		    	 escolha = entrada.nextLine();
-		     }
-		     
-		     
-		    
-		     //System.out.println(prova.getQuestoes().size());
-		     //System.out.println(prova.getQuestoes().get(0).getEnunciado());
-		     //System.out.println(prova.getQuestoes().get(1).getEnunciado());
-		    System.out.println("======================================================\n");
-		    
-		    //provac.insere(prova);
-		  
-		    ProvaDAO provaDAO = new ProvaDAO();
-		    provaDAO.cadastrar(prova);
-		   
-		     
-		} */
 	}
 
 }

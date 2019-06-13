@@ -134,12 +134,11 @@ public class QuestaoDAO {
 	}
 	
 	
-	public ArrayList<Questao> lista(int idarea) {
-		String sql = "select * from questao where idarea = ?";
+	public ArrayList<Questao> lista() {
+		String sql = "select * from questao";
 		
 		try {
 			stmt = conexao.prepareStatement(sql);
-			stmt.setInt(1, idarea);
             ResultSet rs = stmt.executeQuery();
             
             ArrayList<Questao> lista = new ArrayList<Questao>();
