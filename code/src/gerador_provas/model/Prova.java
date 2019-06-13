@@ -68,23 +68,6 @@ public class Prova {
 				doc.add(questao);
 			}
 			
-			/*for(int i=0; i<= prova.getQuestoes().size(); i++) {
-				System.out.println("Olaaaaaa");
-				System.out.println(prova.getQuestoes().get(i).getEnunciado());
-				Paragraph questao = new Paragraph(prova.getQuestoes().get(i).getEnunciado());
-				questao.setAlignment(0);
-				doc.add(questao);
-				questao = new Paragraph("\n");
-				doc.add(questao);
-				
-				for(int x = 0; x <= prova.getQuestoes().get(i).getAlternativas().length; x++) {
-					System.out.println(prova.getQuestoes().get(i).getAlternativas()[x].getAlternativa());
-					Paragraph alternativa = new Paragraph(prova.getQuestoes().get(i).getAlternativas()[x].getAlternativa());
-					alternativa.setAlignment(2);
-					doc.add(alternativa);
-				}
-			}*/
-			
 			doc.close();
 			Desktop.getDesktop().open(new File(arquivoPDF));
 		}catch(Exception e) {
