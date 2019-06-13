@@ -45,11 +45,12 @@ public class TesteQuestao {
 			System.out.println("Cadastro de professor");
 			
 			System.out.println("CPF: ");
-			long cpf = entrada.nextLong();
-		
+			String cpf2 = entrada.nextLine();
+			long cpf = Long.parseLong(cpf2);
 			
 			System.out.println("Nome: ");
 			String nome = entrada.nextLine();
+			
 			
 			System.out.println("Instituicao: ");
 			String instituicao = entrada.nextLine(); 
