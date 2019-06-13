@@ -2,6 +2,7 @@ package gerador_provas.control;
 
 
 import gerador_provas.model.Questao;
+import gerador_provas.dao.AlternativaDAO;
 import gerador_provas.dao.QuestaoDAO;
 
 
@@ -57,5 +58,14 @@ public class QuestaoController {
 			System.out.println("Erro, questão invalida");
 		}
 		
+	}
+	
+	public String deletar(int idquestao) {
+		AlternativaDAO alternativaDAO = new AlternativaDAO();
+		
+		alternativaDAO.deletar(idquestao);
+		questaoDAO.deletar(idquestao);
+		
+		return "Deletado com sucesso";
 	}
 }

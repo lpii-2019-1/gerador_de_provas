@@ -141,11 +141,11 @@ public class AlternativaDAO {
 		return alternativa;
 		
 	}
-	  public void deletar(Alternativa alternativa) {
-			String sql = "delete from alternativa where idalternativa = ?;";
+	  public void deletar(int idquestao) {
+			String sql = "delete from alternativa where idquestao = ?;";
 			try {
             	stmt = conexao.prepareStatement(sql);
-                stmt.setInt(1, alternativa.getIdAlternativa());
+                stmt.setInt(1, idquestao);
 				stmt.execute();
 				stmt.close();
 			}catch (SQLException e) {

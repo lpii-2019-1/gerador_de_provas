@@ -33,7 +33,7 @@ public class TesteQuestao {
 		
 		Scanner input = new Scanner(System.in);
 		
-		System.out.println("1 - Cadastrar Professor  \n2 - Login \n3 - ");
+		System.out.println("1 - Cadastrar Professor  \n2 - Login");
 		String wv = input.nextLine();
 		int op = Integer.parseInt(wv);
 		
@@ -88,10 +88,10 @@ public class TesteQuestao {
 			if(professor.getCpf() == cpf && professor.getSenha().equals(senha)) {
 				System.out.println("\n Bem-vinda(o) " + professor.getNome() + "\n");
 				
-				System.out.println("MENU\n1 - Cadastrar Questoes      \n2 - Deletar Questoes   \n3 - Gerar Provas \n4 - Sair");
+				System.out.println("MENU\n1 - Cadastrar Questoes      \n2- Deletar Questoes  \n3 - Gerar Provas \n0 - Sair");
 				
 				int operacao = entrada.nextInt();
-				while(operacao != 4) {
+				while(operacao != 0) {
 					
 					if(operacao == 1) {
 						
@@ -197,7 +197,30 @@ public class TesteQuestao {
 					}
 					else if(operacao == 2) {
 						
-						int opcao = entrada.nextInt();
+						System.out.println("================ Deletar Questao ================");
+						
+						QuestaoDAO aquestaoDAO = new QuestaoDAO();
+						ArrayList<Questao> questoes = aquestaoDAO.lista();
+						
+					     for (Questao q : questoes) {
+					    	  System.out.println("\nID: " + q.getIdquestao());
+					          System.out.println("Enunciado: \n"+ q.getEnunciado());
+					          System.out.println("Area: " + q.getArea().getArea());
+					          System.out.println("Disciplina: " + q.getDisciplina().getDisciplina());
+					          System.out.println("Origem: " + q.getProfessor().getNome());  
+					     }
+					     
+					     System.out.print("\nID: ");
+					     Scanner pqp  = new Scanner(System.in);
+					     
+					     String kkk = pqp.nextLine();
+					     int iddelete = Integer.parseInt(kkk);
+					     
+					     
+					     System.out.println(questaoc.deletar(iddelete));
+					     
+					 	System.out.println("\nMENU\n1 - Cadastrar Questoes      \n2 - Deletar Questoes   \n3 - Gerar Provas \n4 - Sair");
+					    int opcao = entrada.nextInt();
 						operacao = opcao;
 						
 					}

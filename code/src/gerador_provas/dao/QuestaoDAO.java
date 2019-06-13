@@ -175,15 +175,14 @@ public class QuestaoDAO {
 	public Questao atualizar(Questao questao) {
 	
 		
-		String sql = "update questao set idarea = ?, iddisciplina = ?, idorigem = ?, enunciado = ?, imagem = ? where idquestao = ?";
+		String sql = "update questao set idarea = ?, iddisciplina = ?, enunciado = ?, imagem = ? where idquestao = ?";
 		try {
 			stmt = conexao.prepareStatement(sql);
 			stmt.setInt(1, questao.getArea().getIdarea());
 			stmt.setInt(2, questao.getDisciplina().getIddisciplina());
-			stmt.setInt(3, questao.getOrigem().getIdorigem());
-			stmt.setString(4,questao.getEnunciado());
-			stmt.setString(5, questao.getImagem());
-			stmt.setInt(6, questao.getIdquestao());
+			stmt.setString(3,questao.getEnunciado());
+			stmt.setString(4, questao.getImagem());
+			stmt.setInt(5, questao.getIdquestao());
 			stmt.execute();
 			stmt.close();
 		}catch (Exception e) {
@@ -191,6 +190,19 @@ public class QuestaoDAO {
 		}
 		
 		return questao;
+		
+	}
+	
+	public void deletar(int idquestao) {
+		String sql = "delete from questao where idquestao= ?";
+		try {
+			stmt = conexao.prepareStatement(sql);
+			stmt.setInt(1,idquestao);
+			stmt.execute();
+			stmt.close();
+		}catch (Exception e) {
+			throw new RuntimeException(e);
+		}
 		
 	}
 	
