@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.itextpdf.text.Document;
+import com.itextpdf.text.Element;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 
@@ -57,20 +58,29 @@ public class Prova {
 			doc.open();
 			
 			Paragraph p = new Paragraph(prova.getCabecalho());
-			p.setAlignment(1);
+			p.setAlignment(0);
+			doc.add(p);
+			p = new Paragraph (prova.getProfessor().getNome());
+			p.setAlignment(0);
+			doc.add(p);
+			p = new Paragraph(prova.getProfessor().getInstituicao());
+			p.setAlignment(0);
 			doc.add(p);
 			p = new Paragraph("\n\n");
 			doc.add(p);
 			
+			String[] letras = {"A","B","C","D","E","F","G"};
+			int cont= 1;
 			for(Questao q: prova.getQuestoes()) {
-				Paragraph questao = new Paragraph(q.getEnunciado());
-				questao.setAlignment(0);
+				Paragraph questao = new Paragraph("\n" + cont + q.getEnunciado());
+				questao.setAlignment(Element.ALIGN_JUSTIFIED);
 				doc.add(questao);
 				
 				for(Alternativa a: q.getAlternativas()) {
-					Paragraph alternativa = new Paragraph(a.getAlternativa());
+					Paragraph alternativa = new Paragraph("\n " +  a.getAlternativa());
 					alternativa.setAlignment(0);
 					doc.add(alternativa);
+					cont++;
 				}
 			}
 			
