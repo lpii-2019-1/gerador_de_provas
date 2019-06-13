@@ -12,6 +12,18 @@ public class TesteProfessor {
 		
 	
 		System.out.println(resultado + "\nFim da execução");
+
+
+
+		long cpf = 500508713;
+		String nome = "Bruno Geovane";
+		String instituicao = "if goiano";
+		String email = "bruno@gmail";
+		String senha = "testsenha";
+		
+		professorc.atualizar(new Professor(cpf, nome, instituicao, email, senha));
+	  //  professorc.deletar(new Professor(cpf));
+}
 	}
 
-}
+

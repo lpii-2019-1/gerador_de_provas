@@ -18,4 +18,14 @@ public class ProfessorController {
 			return resul.getCpf();
 		}
 	}
+	public void atualizar(Professor professor){
+		ProfessorDAO professorDAO = new ProfessorDAO();    
+		
+		professorDAO.atualizar(new Professor(professor.getCpf(), professor.getNome(), professor.getInstituicao(), professor.getEmail(), professor.getSenha()));
+	}
+	public void deletar(Professor professor){
+		ProfessorDAO professorDAO = new ProfessorDAO();
+		
+		professorDAO.deletar(new Professor(professor.getCpf()));
+	}
 }
