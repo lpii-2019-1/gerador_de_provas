@@ -76,43 +76,39 @@ public class ProfessorDAO {
 		}
 		return null;
 	}
-	public Professor atualizar(Professor professor) {
-		String sql = "update professor set cpf = ?, nome = ?, instituicao = ?, email = ?, senha = ? where cpf = ?; ";
+	public void atualizar(Professor professor) {
+		String sql = "update professor set nome = ?, instituicao = ?, email = ?, senha = ? where cpf = ?;";
 		try {
 			stmt = conexao.prepareStatement(sql);
-			stmt.setLong(1, professor.getCpf());
-			stmt.setString(2, professor.getNome());
-			stmt.setString(3, professor.getInstituicao());
-			stmt.setString(4, professor.getEmail());
-			stmt.setString(5, professor.getSenha());
-			stmt.setLong(6, professor.getCpf());
-
+			stmt.setString(1, professor.getNome());
+			stmt.setString(2, professor.getInstituicao());
+			stmt.setString(3, professor.getEmail());
+			stmt.setString(4, professor.getSenha());
+			stmt.setLong(5, professor.getCpf());
 			stmt.execute();
 			stmt.close();
-		}catch (Exception e) {
+		}catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
 		
-		return professor;
+		
 		
 	}
-        public Professor deletar(Professor professor) {
-			String sql = "delete from professor where cpf = ?;";
-			try {
-                            System.out.println(professor.getProfessor());
-				stmt = conexao.prepareStatement(sql);
-                                stmt.setInt(1, professor.getProfessor());
-				stmt.execute();
-				stmt.close();
-			} catch (SQLException e) {
-				throw new RuntimeException(e);
-			}
-                        
-                        
-			
-			return professor;
-			
+	   public void deletar(Professor professor) {
+		String sql = "delete from professor where cpf = ?;";
+		try {
+			System.out.println(professor.getCpf());
+			stmt = conexao.prepareStatement(sql);
+			stmt.setLong(1, professor.getCpf());
+			stmt.execute();
+			stmt.close();
+		} catch (SQLException e) {
+						e.printStackTrace();
+			throw new RuntimeException(e);
 		}
+					
+		
+	}
 	
 	
 }
