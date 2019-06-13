@@ -211,23 +211,16 @@ public class TesteQuestao {
 					    	 escolha = leitura.nextLine();
 					     }
 					     
-					     
 					    
-					     //System.out.println(prova.getQuestoes().size());
-					     //System.out.println(prova.getQuestoes().get(0).getEnunciado());
-					     //System.out.println(prova.getQuestoes().get(1).getEnunciado());
+					    
 					    System.out.println("======================================================\n");
-					    
-					    //provac.insere(prova);
 					    
 					
 					    
 					    System.out.println(prova.gerarPDF(prova));
-					    //ProvaDAO provaDAO = new ProvaDAO();
-					    //provaDAO.cadastrar(prova);
+					    ProvaDAO provaDAO = new ProvaDAO();
+					    provaDAO.cadastrar(prova);
 
-						
-						
 						int opcao = entrada.nextInt();
 						operacao = opcao;
 						

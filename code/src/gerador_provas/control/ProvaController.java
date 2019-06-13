@@ -21,29 +21,7 @@ public class ProvaController {
 	
 	public int insere(Prova prova) {
 		Prova provaResul = provaDAO.cadastrar(prova);
-		
-		System.out.println(provaResul.getCabecalho());
-		System.out.println(provaResul.getIdprova());
-		System.out.println(provaResul.getProfessor().getNome());
-		System.out.println(provaResul.getQuestoes().get(0).getEnunciado());
-		System.out.println(provaResul.getQuestoes().get(1).getEnunciado());
-		int tamanho = provaResul.getQuestoes().size();
-		
-		tipo.setProva(provaResul);
-		tipo.setIdtipo(1);
-		tipo.setLetra("A");
-		for(int i=0; i< tamanho; i++) {
-			tipo.setPosicao(i);
-			tipo.adicionaQuestao(provaResul.getQuestoes().get(i).getIdquestao());
-			tipoDAO.cadastrar(tipo, provaResul);
-		}
-		
-		
-		
-		
-		
-		
-		
+			
 		return 0;
 	}
 }

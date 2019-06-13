@@ -70,17 +70,20 @@ public class Prova {
 			doc.add(p);
 			
 			String[] letras = {"A","B","C","D","E","F","G"};
-			int cont= 1;
+			int cont= 0;
 			for(Questao q: prova.getQuestoes()) {
-				Paragraph questao = new Paragraph("\n" + cont + q.getEnunciado());
+				cont++;
+				Paragraph questao = new Paragraph("\n" + cont + ") " + q.getEnunciado());
 				questao.setAlignment(Element.ALIGN_JUSTIFIED);
 				doc.add(questao);
 				
+				int aux = 0;
 				for(Alternativa a: q.getAlternativas()) {
-					Paragraph alternativa = new Paragraph("\n " +  a.getAlternativa());
+					 
+					Paragraph alternativa = new Paragraph("\n (" + letras[aux] +") " + a.getAlternativa());
 					alternativa.setAlignment(0);
 					doc.add(alternativa);
-					cont++;
+					aux++;
 				}
 			}
 			
