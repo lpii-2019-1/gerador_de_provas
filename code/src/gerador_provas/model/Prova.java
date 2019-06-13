@@ -66,6 +66,12 @@ public class Prova {
 				Paragraph questao = new Paragraph(q.getEnunciado());
 				questao.setAlignment(0);
 				doc.add(questao);
+				
+				for(Alternativa a: q.getAlternativas()) {
+					Paragraph alternativa = new Paragraph(a.getAlternativa());
+					alternativa.setAlignment(0);
+					doc.add(alternativa);
+				}
 			}
 			
 			doc.close();
