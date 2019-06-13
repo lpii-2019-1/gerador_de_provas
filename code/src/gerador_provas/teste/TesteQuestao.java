@@ -4,6 +4,8 @@ package gerador_provas.teste;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import javax.swing.JFileChooser;
+
 import gerador_provas.control.AreaController;
 import gerador_provas.control.DisciplinaController;
 import gerador_provas.control.OrigemController;
@@ -116,8 +118,6 @@ public class TesteQuestao {
 			alternativas[3] = a4;
 			alternativas[4] = a5;
 			
-			
-			
 			Questao questao = new Questao(professor, area, disciplina, origem, enunciado, alternativas);
 			
 			questaoc.insere(questao);
@@ -147,25 +147,94 @@ public class TesteQuestao {
 					
 					if(operacao == 1) {
 						
+						Scanner entrada_dados = new Scanner(System.in);
+						
 						System.out.println("\n*Cadastro de questoes*\n");
 						
 						System.out.print("Origem: ");
-						String orig = entrada.next();
+						String orig = entrada_dados.nextLine();
+						    
 						System.out.print("Ano: ");
-						int data = entrada.nextInt();
+						String data = entrada_dados.nextLine();
+						int ano = Integer.parseInt(data);
 						
-						System.out.println("Enunciado: ");
-						String enunciado = entrada.nextLine();
+						System.out.print("Area: ");
+						String ar = entrada_dados.nextLine();
 						
-						System.out.println(orig + " " + data);
-						System.out.println("\n --" + enunciado);
+						System.out.print("Disicplina: ");
+						String disc = entrada_dados.nextLine();
 						
 						
-						/*Origem origem = new Origem("ENEM", 2018);
+						System.out.print("Enunciado: ");
+						String enunciado = entrada_dados.nextLine();
+						
+						
+						System.out.println("Insira agora as alternativas...");
+						System.out.println("Informe por último a alternativa correta");
+						
+						Alternativa[] alternativas = new Alternativa[5];
+						
+						System.out.println("\n1º Alternativa:");
+						String alter1 = entrada_dados.nextLine();
+						Alternativa a1 = new Alternativa();
+						a1.setAlternativa(alter1);
+						a1.setCorreta(false);
+						
+						System.out.println("\n2º Alternativa:");
+						String alter2 = entrada_dados.nextLine();
+						Alternativa a2 = new Alternativa();
+						a2.setAlternativa(alter2);
+						a2.setCorreta(false);
+						
+						System.out.println("\n3º Alternativa:");
+						String alter3 = entrada_dados.nextLine();
+						Alternativa a3 = new Alternativa();
+						a3.setAlternativa(alter3);
+						a3.setCorreta(false);
+						
+						System.out.println("\n4º Alternativa:");
+						String alter4 = entrada_dados.nextLine();
+						Alternativa a4 = new Alternativa();
+						a4.setAlternativa(alter4);
+						a4.setCorreta(false);
+						
+						System.out.println("\n 5º Alternativa:");
+						String alter5 = entrada_dados.nextLine();
+						Alternativa a5 = new Alternativa();
+						a5.setAlternativa(alter5);
+						a5.setCorreta(true);
+						
+						alternativas[0] = a1;
+						alternativas[1] = a2;
+						alternativas[2] = a3;
+						alternativas[3] = a4;
+						alternativas[4] = a5;
+						
+						
+						Origem origem = new Origem(orig, ano);
 						OrigemController origemc = new OrigemController();
-						origem.setIdorigem(origemc.insere(origem)); */
+						//origem.setIdorigem(origemc.insere(origem));
+						
+						Area area = new Area(ar);
+						AreaController areac = new AreaController();
+						//area.setIdarea(areac.insere(area));
+						
+						Disciplina disciplina =  new Disciplina();
+						DisciplinaController disciplinac = new DisciplinaController();
+						//disciplina.setIddisciplina(disciplinac.insere(disciplina));
+						
+						Questao questao = new Questao();
+						
+						JFileChooser chooser = new JFileChooser();
+						chooser.showDialog(null,"Selecionar");
+						java.io.File oFile = chooser.getSelectedFile();
+						if(oFile != null) {
+							questao.SetImagem(oFile.getAbsolutePath());
+						}
+						
 						
 						int opcao = entrada.nextInt();
+						//int opcao = Integer.parseInt(we);
 						operacao = opcao;
 					}
 					else if(operacao == 2) {
@@ -183,7 +252,6 @@ public class TesteQuestao {
 						prova.setCabecalho("Escola Estadual 31 de Fevereiro");
 						
 						QuestaoDAO aquestaoDAO = new QuestaoDAO();
-						
 						
 						ArrayList<Questao> questoes = aquestaoDAO.lista(2);
 						prova.setProfessor(professor);
@@ -211,16 +279,13 @@ public class TesteQuestao {
 					    	 escolha = leitura.nextLine();
 					     }
 					     
-					    
-					    
 					    System.out.println("======================================================\n");
-					    
-					
-					    
-					    System.out.println(prova.gerarPDF(prova));
+					    					   
 					    ProvaDAO provaDAO = new ProvaDAO();
-					    provaDAO.cadastrar(prova);
+					    Prova provaResul = provaDAO.cadastrar(prova);
 
+					    System.out.println(prova.gerarPDF(provaResul));
+					    
 						int opcao = entrada.nextInt();
 						operacao = opcao;
 						

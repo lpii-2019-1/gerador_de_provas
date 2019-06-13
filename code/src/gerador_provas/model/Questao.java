@@ -10,7 +10,7 @@ public class Questao
   private Disciplina disciplina;
   private String enunciado;
   private Alternativa[] alternativa;
-  private Blob imagem;
+  private String imagem;
 
 
   public int getIdquestao() {
@@ -41,9 +41,9 @@ public class Questao
   
   public void setDisciplina(Disciplina disciplina) { this.disciplina = disciplina; }
   
-  public Blob getImagem() { return imagem; }
+  public String getImagem() { return imagem; }
   
-  public void SetImagem(Blob imagem) { this.imagem = imagem; }
+  public void SetImagem(String imagem) { this.imagem = imagem; }
   
   public Alternativa[] getAlternativas() { return alternativa;}
   

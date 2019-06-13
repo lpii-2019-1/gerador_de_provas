@@ -27,7 +27,7 @@ public class QuestaoDAO {
 			stmt.setInt(3,questao.getDisciplina().getIddisciplina());
 			stmt.setInt(4, questao.getOrigem().getIdorigem());
 			stmt.setString(5, questao.getEnunciado());
-			stmt.setBlob(6,questao.getImagem());
+			stmt.setString(6,questao.getImagem());
 			stmt.execute(); 
 			
 			ResultSet rs = stmt.getGeneratedKeys();
@@ -79,7 +79,7 @@ public class QuestaoDAO {
 	            questaoResul.setOrigem(origemDAO.pesquisarId(rs.getInt("idorigem")));
 	            
 	            questaoResul.setEnunciado(rs.getString("enunciado"));
-	            questaoResul.SetImagem(rs.getBlob("imagem"));
+	            questaoResul.SetImagem(rs.getString("imagem"));
 	            
 	             stmt.close();
 	             return questaoResul;
@@ -122,7 +122,7 @@ public class QuestaoDAO {
 				AlternativaDAO alternativaDAO = new AlternativaDAO();
 				questao.setAlternativa(alternativaDAO.pesquisarId(rs.getInt("idquestao")));
 				
-				questao.SetImagem(rs.getBlob("imagem"));
+				questao.SetImagem(rs.getString("imagem"));
 				questao.setEnunciado(rs.getString("enunciado"));
 			}
 			
@@ -161,7 +161,7 @@ public class QuestaoDAO {
 	            questaoResul.setOrigem(origemDAO.pesquisarId(rs.getInt("idorigem")));
 	            
 	            questaoResul.setEnunciado(rs.getString("enunciado"));
-	            questaoResul.SetImagem(rs.getBlob("imagem"));
+	            questaoResul.SetImagem(rs.getString("imagem"));
             	
     
             	lista.add(questaoResul);
@@ -183,7 +183,7 @@ public class QuestaoDAO {
 			stmt.setInt(2, questao.getDisciplina().getIddisciplina());
 			stmt.setInt(3, questao.getOrigem().getIdorigem());
 			stmt.setString(4,questao.getEnunciado());
-			stmt.setBlob(5, questao.getImagem());
+			stmt.setString(5, questao.getImagem());
 			stmt.setInt(6, questao.getIdquestao());
 			stmt.execute();
 			stmt.close();
