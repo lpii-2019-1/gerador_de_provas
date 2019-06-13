@@ -50,18 +50,20 @@ public class Questao
   public void setAlternativa(Alternativa[] alternativa) { this.alternativa = alternativa; }
   
 
+
  
- public Questao(Professor professor, Area area, Disciplina disciplina, Origem origem, String enunciado, Alternativa[] alternativas) {
+ public Questao(Professor professor, Area area, Disciplina disciplina, Origem origem, String enunciado, Alternativa[] alternativas,String imagem) {
 	  this.professor = professor;
 	  this.origem = origem;
 	  this.area = area;
 	  this.disciplina = disciplina;
 	  this.enunciado = enunciado;
 	  this.alternativa = alternativas;
+	  this.imagem = imagem;
  }
  
  public Questao() {};
 
-
-  
+ 
+ 
 }

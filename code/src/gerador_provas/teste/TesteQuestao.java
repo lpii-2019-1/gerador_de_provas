@@ -118,9 +118,9 @@ public class TesteQuestao {
 			alternativas[3] = a4;
 			alternativas[4] = a5;
 			
-			Questao questao = new Questao(professor, area, disciplina, origem, enunciado, alternativas);
+			//Questao questao = new Questao(professor, area, disciplina, origem, enunciado, alternativas);
 			
-			questaoc.insere(questao);
+			//questaoc.insere(questao);
 
 		}
 		
@@ -213,15 +213,16 @@ public class TesteQuestao {
 						
 						Origem origem = new Origem(orig, ano);
 						OrigemController origemc = new OrigemController();
-						//origem.setIdorigem(origemc.insere(origem));
+						origem.setIdorigem(origemc.insere(origem));
 						
 						Area area = new Area(ar);
 						AreaController areac = new AreaController();
-						//area.setIdarea(areac.insere(area));
+						area.setIdarea(areac.insere(area));
 						
-						Disciplina disciplina =  new Disciplina();
+						Disciplina disciplina =  new Disciplina(disc);
 						DisciplinaController disciplinac = new DisciplinaController();
-						//disciplina.setIddisciplina(disciplinac.insere(disciplina));
+						disciplina.setIddisciplina(disciplinac.insere(disciplina));
+						
 						
 						Questao questao = new Questao();
 						
@@ -232,6 +233,16 @@ public class TesteQuestao {
 							questao.SetImagem(oFile.getAbsolutePath());
 						}
 						
+
+						questao.setAlternativa(alternativas);
+						questao.setArea(area);
+						questao.setDisciplina(disciplina);
+						questao.setEnunciado(enunciado);
+						questao.setOrigem(origem);
+						questao.setProfessor(professor);
+						questaoc.insere(questao);
+
+						questaoc.insere(questao);
 						
 						int opcao = entrada.nextInt();
 						//int opcao = Integer.parseInt(we);
